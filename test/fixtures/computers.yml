@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  idtag: MyString
+  serial: MyString
+  brand: MyString
+  model: MyString
+  location: MyString
+
+two:
+  idtag: MyString
+  serial: MyString
+  brand: MyString
+  model: MyString
+  location: MyString

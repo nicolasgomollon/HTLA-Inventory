@@ -11,14 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120608200448) do
+ActiveRecord::Schema.define(:version => 20120610222409) do
 
-  create_table "posts", :force => true do |t|
-    t.string   "name"
-    t.string   "title"
-    t.text     "content"
+  create_table "computers", :force => true do |t|
+    t.string   "idtag"
+    t.string   "serial"
+    t.string   "brand"
+    t.string   "model"
+    t.string   "location"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "computers", ["serial"], :name => "index_computers_on_serial"
 
 end
