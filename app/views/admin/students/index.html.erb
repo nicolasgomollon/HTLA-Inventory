@@ -1,0 +1,30 @@
+<h1>Listing Students</h1>
+ 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>ID</th>
+    <th>History</th>
+  </tr>
+ 
+<% @students.each do |student| %>
+  <tr>
+    <td><%= student.firstname %> <%= student.lastname %></td>
+    <td><%= student.studentid %></td>
+	<td><table>
+		<tr>
+			<th>Computer Tag</th>
+			<th>Current?</th>
+		</tr>
+		<% student.computer_ownerships.each do |ownership| %>
+		<tr>
+			<td><%= ownership.computer.idtag %></td>
+			<td><%= ownership.current? %></td>
+		</tr>
+		<% end %>
+		</table></td>
+  </tr>
+<% end %>
+</table>
+ 
+<br />
