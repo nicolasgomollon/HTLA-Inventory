@@ -3,9 +3,8 @@ class CreateStudents < ActiveRecord::Migration
     create_table :students do |t|
       t.string :firstname
       t.string :lastname
-      t.number :studentid
-      t.index :studentid
-      t.number :classof
+      t.integer :studentid
+      t.integer :classof
 
       t.timestamps
     end

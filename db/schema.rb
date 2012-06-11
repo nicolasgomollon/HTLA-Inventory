@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120610222409) do
+ActiveRecord::Schema.define(:version => 20120610223556) do
+
+  create_table "computer_ownerships", :force => true do |t|
+    t.date     "startdate"
+    t.date     "enddate"
+    t.integer  "computer_id"
+    t.integer  "student_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "computers", :force => true do |t|
     t.string   "idtag"
@@ -24,5 +33,14 @@ ActiveRecord::Schema.define(:version => 20120610222409) do
   end
 
   add_index "computers", ["serial"], :name => "index_computers_on_serial"
+
+  create_table "students", :force => true do |t|
+    t.string   "firstname"
+    t.string   "lastname"
+    t.integer  "studentid"
+    t.integer  "classof"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  startdate: 2012-06-10
+  enddate: 2012-06-10
+
+two:
+  startdate: 2012-06-10
+  enddate: 2012-06-10
