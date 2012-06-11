@@ -3,4 +3,15 @@ class ComputerOwnership < ActiveRecord::Base
   
   belongs_to :computer
   belongs_to :student
+  
+  def current?
+    if @enddate.nil?
+      return true
+    else
+      if @enddate > Date.today
+        return true
+      end
+    end
+    false
+  end
 end
