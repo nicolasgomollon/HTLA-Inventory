@@ -9,7 +9,7 @@
  
 <% @students.each do |student| %>
   <tr>
-    <td><%= student.firstname %> <%= student.lastname %></td>
+    <td><%= link_to student.firstname + " " + student.lastname, admin_student_path(student) %></td>
     <td><%= student.studentid %></td>
 	<td><table>
 		<tr>

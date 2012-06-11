@@ -1,0 +1,18 @@
+<%= @student.firstname %> <%= @student.lastname %> <br/>
+
+<table>
+	<tr>
+		<th>Tag</th>
+		<th>Start</th>
+		<th>End</th>
+		<th></th>
+	</tr>
+<% @student.computer_ownerships.each do |ownership| %>
+	<tr>
+		<td><%= ownership.computer.idtag %></td>
+		<td><%= ownership.startdate %></td>
+		<td><%= ownership.enddate %></td>
+		<td><%= link_to "Show", admin_ownership_path(ownership.id) %>
+	</tr>
+<% end %>
+</table>

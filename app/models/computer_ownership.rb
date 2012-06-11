@@ -8,7 +8,7 @@ class ComputerOwnership < ActiveRecord::Base
     if @enddate.nil?
       return true
     else
-      if @enddate > Date.today
+      if @enddate >= Date.today
         return true
       end
     end
