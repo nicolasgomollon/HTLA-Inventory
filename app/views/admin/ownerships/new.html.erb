@@ -1,17 +1,7 @@
-<% if @mode.eql? "computer" %>
-	<table>
-		<tr><th>Tag</th><th></th></tr>
-	<% @computers.each do |computer| %>
-	<tr>
-		<%= form_tag(admin_ownerships_path) do %>
-			<td><%= computer.idtag %></td>
-			<td><%= submit_tag("Select") %></td>
-			<%= hidden_field_tag(:studentid, @student.id) %>
-			<%= hidden_field_tag(:computerid, computer.id) %>
-		<% end %>
-	</tr>
-	<% end %>
-	</table>
-<% end %>
-<% if @mode == "student" %>
+<%= form_tag(admin_ownerships_path) do %>
+	<%= label_tag(:studentid, "Student ID:") %>
+	<%= text_field_tag(:studentid, @sid) %>
+	<%= label_tag(:computerid, "Computer ID:") %>
+	<%= text_field_tag(:computerid, @cid) %>
+	<%= submit_tag "Create Ownership" %>
 <% end %>

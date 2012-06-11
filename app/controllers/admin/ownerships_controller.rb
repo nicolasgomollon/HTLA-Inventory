@@ -4,18 +4,8 @@ class Admin::OwnershipsController < ApplicationController
   end
   
   def new
-    @mode = ""
-    if !params[:studentid].nil?
-      @mode = "computer"
-      @student = Student.where(:studentid => params[:studentid]).first
-      @computers = Computer.all
-    elsif !params[:computertag].nil?  
-      @mode = "student"
-      @computertag = params[:computertag]
-      @students = Student.all
-    else  
-      @mode = "neither"
-    end
+    @sid = params[:sid]
+    @cid = params[:cid]
   end
   
   def create
