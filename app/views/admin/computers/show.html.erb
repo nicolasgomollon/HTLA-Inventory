@@ -1,0 +1,19 @@
+Tag: <%= @computer.idtag %>
+Date: <%= Date.today %>
+Ownerships:
+<table>
+	<tr>
+		<th>Owner</th>
+		<th>Start</th>
+		<th>End</th>
+		<th>Current</th>
+	</tr>
+<% @computer.computer_ownerships.each do |ownership| %>
+	<tr>
+		<th><%= ownership.student.firstname %> <%= ownership.student.lastname %></th>
+		<th><%= ownership.startdate %></th>
+		<th><%= ownership.enddate %></th>
+		<th><%= ownership.current?%>
+	</tr>
+<% end %>
+</table>

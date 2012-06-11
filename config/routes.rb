@@ -51,6 +51,7 @@ HTLAInventory::Application.routes.draw do
   namespace :admin do
     resources :students
     resources :ownerships
+    resources :computers
   end
 
   # You can have the root of your site routed with "root"

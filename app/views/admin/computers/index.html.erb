@@ -1,0 +1,3 @@
+<% @computers.each do |computer| %>
+	<%= link_to computer.idtag, admin_computer_path(computer.id) %></br>
+<% end%>
