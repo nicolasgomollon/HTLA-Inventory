@@ -1,7 +1,14 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#datepicker").datepicker({dateFormat:"yy-mm-dd"})
+	})
+</script>
 <%= form_tag(admin_ownerships_path) do %>
 	<%= label_tag(:studentid, "Student ID:") %>
 	<%= text_field_tag(:studentid, @sid) %>
 	<%= label_tag(:computerid, "Computer ID:") %>
 	<%= text_field_tag(:computerid, @cid) %>
+	<%= label_tag(:date, "Start Date") %>
+	<%= text_field_tag(:date, Date.today.to_s, :id=>"datepicker") %>
 	<%= submit_tag "Create Ownership" %>
 <% end %>
