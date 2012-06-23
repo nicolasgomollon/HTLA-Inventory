@@ -1,3 +1,15 @@
+<%= link_to "Enter new Computer", new_admin_computer_path %>
+<%= form_tag(admin_computers_path, :method=>'get') do %>
+	<%= label_tag :serial, "Serial Number"%>
+	<%= text_field_tag :serial, @serial %>
+	<%= label_tag :tag, "Tag"%>
+	<%= text_field_tag :tag, @tag %>
+	<%= submit_tag "Search" %>
+<% end %>
+<% if !@computers.nil? then %>
 <% @computers.each do |computer| %>
-	<%= link_to computer.idtag, admin_computer_path(computer.id) %></br>
+	<%= link_to computer.idtag, admin_computer_path(computer) %><br/>
+<% end %>
+<% else %>
+	No Computers to Display!
 <% end%>
