@@ -8,6 +8,6 @@ class ComputerPart < ActiveRecord::Base
   
   def init
     self.description ||= ""
-    self.status ||= true
+    self.status ||= true if self.status.nil?
   end
 end

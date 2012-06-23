@@ -16,7 +16,6 @@ class Admin::ComputersController < ApplicationController
         query_array.push("%#{params[:tag]}%")
       end
     end
-    #return render :text => query_array
     @computers = Computer.where(query, *query_array) if !query.empty?
   
     @tag = params[:tag]
@@ -47,7 +46,7 @@ class Admin::ComputersController < ApplicationController
     params[:part].each do |key, part_params|
       part = @computer.computer_parts.find(part_params[:id].to_i)
       part.description = part_params[:description]
-      part.status = part_params[:status]
+      part.status = part_params[:status].to_bool
       part.save
     end 
     

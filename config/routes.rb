@@ -53,6 +53,7 @@ HTLAInventory::Application.routes.draw do
     resources :ownerships
     resources :computers
     resources :templates
+    root :to => "admin#index"
   end
 
   # You can have the root of your site routed with "root"
