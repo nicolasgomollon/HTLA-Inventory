@@ -9,6 +9,7 @@ class Admin::ComputersController < ApplicationController
   end
   
   def new
+    @computer = Computer.new
     templates = ComputerTemplate.all
     @template_select = []
     templates.each do |template|
@@ -38,12 +39,14 @@ class Admin::ComputersController < ApplicationController
   
   def create
     template = ComputerTemplate.find(params[:template_id])
-    computer = Computer.new(:serial => params[:serial], :brand => template.name)
+    computer = Computer.new()
+    computer.update_attributes(params[:computer])
+    computer.brand = template.name
     template.parts.split(",").each do |part|
-      computer.computer_parts.new(:name => part, :status=>false, :description => "")
+      computer.computer_parts.new(:name => part)
     end
     computer.save
     
-    redirect_to admin_computer_path(computer)
+    redirect_to edit_admin_computer_path(computer)
   end
 end

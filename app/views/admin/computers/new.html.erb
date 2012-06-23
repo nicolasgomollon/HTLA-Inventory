@@ -1,7 +1,9 @@
-<%= form_tag(admin_computers_path) do %>
+<%= form_for [:admin, @computer] do |f| %>
 	<%= label_tag(:template_id, "Computer Template:") %>
 	<%= select_tag(:template_id, options_for_select(@template_select)) %>
-	<%= label_tag(:serial, "Serial Number:") %>
-	<%= text_field_tag(:serial) %>
-	<%= submit_tag("Create Computer") %>
+	<%= f.label :serial, "Serial Number" %>
+	<%= f.text_field :serial %>
+	<%= f.label :idtag, "Tag" %>
+	<%= f.text_field :idtag %>
+	<%= f.submit %>
 <% end %>
