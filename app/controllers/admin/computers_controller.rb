@@ -3,20 +3,10 @@ class Admin::ComputersController < ApplicationController
   def index
     query = ""
     query_array = []
-    if !params[:serial].nil? then
-      if !params[:serial].empty? then
-        query += " serial LIKE ?"
-        query_array.push("%#{params[:serial]}%")
-      end
-    end 
-    if !params[:tag].nil? then
-      if !params[:tag].empty? then
-        query += " OR " if !query.empty?
-        query += "idtag LIKE ?"
-        query_array.push("%#{params[:tag]}%")
-      end
-    end
-    @computers = Computer.where(query, *query_array) if !query.empty?
+    query = query_helper :serial, params[:serial], query, query_array
+    query = query_helper :idtag, params[:tag], query, query_array
+
+    @computers = Computer.where(query, *query_array) unless query.empty?
   
     @tag = params[:tag]
     @serial = params[:serial]
