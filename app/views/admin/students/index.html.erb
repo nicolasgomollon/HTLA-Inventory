@@ -1,30 +1,16 @@
-<h1>Listing Students</h1>
- 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>ID</th>
-    <th>History</th>
-  </tr>
- 
-<% @students.each do |student| %>
-  <tr>
-    <td><%= link_to student.firstname + " " + student.lastname, admin_student_path(student) %></td>
-    <td><%= student.studentid %></td>
-	<td><table>
-		<tr>
-			<th>Computer Tag</th>
-			<th>Current?</th>
-		</tr>
-		<% student.computer_ownerships.each do |ownership| %>
-		<tr>
-			<td><%= ownership.computer.idtag %></td>
-			<td><%= ownership.current? %></td>
-		</tr>
-		<% end %>
-		</table></td>
-  </tr>
+<%= form_tag(admin_students_path, :method=>'get') do %>
+	<%= label_tag :firstname, "First"%>
+	<%= text_field_tag :firstname, @first %>
+	<%= label_tag :lastname, "Last"%>
+	<%= text_field_tag :lastname, @last %>
+	<%= label_tag :id, "ID#"%>
+	<%= text_field_tag :id, @id %>
+	<%= submit_tag "Search" %>
 <% end %>
-</table>
- 
-<br />
+<% if !@students.nil? then %>
+<% @students.each do |student| %>
+	<%= link_to student.firstname + " " + student.lastname, admin_student_path(student) %><br/>
+<% end %>
+<% else %>
+	No Students to Display!
+<% end%>
