@@ -8,7 +8,7 @@
 <% end %>
 <% if !@computers.nil? then %>
 <% @computers.each do |computer| %>
-	<%= link_to computer.idtag, admin_computer_path(computer) %><br/>
+	<%= link_to computer.idtag + " " + computer.serial, admin_computer_path(computer) %><br/>
 <% end %>
 <% else %>
 	No Computers to Display!
