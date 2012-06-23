@@ -11,3 +11,19 @@
  *= require_self
  *= require_tree .
  */
+.good {
+	background-color: green;
+}
+
+.bad {
+	background-color: red;
+}
+
+.old {
+	background-color: gray;
+}
+
+.current {
+	background-color: white;
+}
+

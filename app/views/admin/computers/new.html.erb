@@ -1,0 +1,7 @@
+<%= form_tag(admin_computers_path) do %>
+	<%= label_tag(:template_id, "Computer Template:") %>
+	<%= select_tag(:template_id, options_for_select(@template_select)) %>
+	<%= label_tag(:serial, "Serial Number:") %>
+	<%= text_field_tag(:serial) %>
+	<%= submit_tag("Create Computer") %>
+<% end %>

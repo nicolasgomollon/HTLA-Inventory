@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120610223556) do
+ActiveRecord::Schema.define(:version => 20120623013443) do
 
   create_table "computer_ownerships", :force => true do |t|
     t.date     "startdate"
@@ -20,6 +20,22 @@ ActiveRecord::Schema.define(:version => 20120610223556) do
     t.integer  "student_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "computer_parts", :force => true do |t|
+    t.boolean  "status"
+    t.string   "description"
+    t.integer  "computer_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "name"
+  end
+
+  create_table "computer_templates", :force => true do |t|
+    t.string   "parts"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "name"
   end
 
   create_table "computers", :force => true do |t|

@@ -1,0 +1,29 @@
+<%= form_for [:admin, @computer] do |f| %>
+	<%= f.label :idtag, "Tag " %>
+	<%= f.text_field :idtag %>
+	<table>
+		<tr>
+			<th>Part</th>
+			<th></th>
+			<th>Description</th>
+		</tr>
+		<% @computer.computer_parts.each do |part| %>
+			<%= fields_for :computer, part do |part_form| %>
+			<tr>
+				<td><%= part.name %></td>
+				<td>
+					<%= part_form.radio_button :status, true, :id=>"part_#{part.id}_status_true", :name=> "part[#{part.id}][status]" %>
+					<%= label_tag "part_#{part.id}_status_true", 'Good' %>
+					<%= part_form.radio_button :status, false, :id=>"part_#{part.id}_status_false", :name=> "part[#{part.id}][status]" %>
+					<%= label_tag "part_#{part.id}_status_false", 'Bad' %>
+				</td>
+				<td>
+					<%= text_field_tag "part[#{part.id}][description]", part.description %>
+				</td>
+					<%= hidden_field_tag "part[#{part.id}][id]", part.id %>
+			</tr>
+			<% end %>
+		<% end %>
+	</table>
+	<%= f.submit %>
+<% end %>

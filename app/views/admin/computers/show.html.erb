@@ -10,10 +10,26 @@ Ownerships:
 	</tr>
 <% @computer.computer_ownerships.each do |ownership| %>
 	<tr>
-		<th><%= ownership.student.firstname %> <%= ownership.student.lastname %></th>
-		<th><%= ownership.startdate %></th>
-		<th><%= ownership.enddate %></th>
-		<th><%= ownership.current?%>
+		<td><%= ownership.student.firstname %> <%= ownership.student.lastname %></td>
+		<td><%= ownership.startdate %></td>
+		<td><%= ownership.enddate %></td>
+		<td><%= ownership.current?%></td>
+	</tr>
+<% end %>
+</table>
+
+Parts:
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Status</th>
+		<th>Description</th>
+	</tr>
+<% @computer.computer_parts.each do |part| %>
+	<tr>
+		<td><%= part.name %></td>
+		<td class="<%= part.status ? "good" : "bad" %>"><%= part.status ? "Good" : "Bad" %> </td>
+		<td><%= part.description %></td>
 	</tr>
 <% end %>
 </table>
