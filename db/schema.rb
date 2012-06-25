@@ -11,7 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120623013443) do
+ActiveRecord::Schema.define(:version => 20120624234757) do
+
+  create_table "activities", :force => true do |t|
+    t.date     "date"
+    t.string   "message"
+    t.string   "desc"
+    t.integer  "student_id"
+    t.integer  "repair_order_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "bills", :force => true do |t|
+    t.string  "desc"
+    t.float   "amount"
+    t.boolean "labor"
+    t.boolean "paid",            :default => false
+    t.integer "repair_order_id"
+  end
 
   create_table "computer_ownerships", :force => true do |t|
     t.date     "startdate"
@@ -50,13 +68,20 @@ ActiveRecord::Schema.define(:version => 20120623013443) do
 
   add_index "computers", ["serial"], :name => "index_computers_on_serial"
 
+  create_table "repair_orders", :force => true do |t|
+    t.date    "startdate"
+    t.date    "enddate"
+    t.integer "computer_id"
+  end
+
   create_table "students", :force => true do |t|
     t.string   "firstname"
     t.string   "lastname"
     t.integer  "studentid"
     t.integer  "classof"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "access",     :default => 0
   end
 
 end
