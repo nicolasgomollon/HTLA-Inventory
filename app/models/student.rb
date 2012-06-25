@@ -3,4 +3,5 @@ class Student < ActiveRecord::Base
   
   has_many :computer_ownerships
   has_many :computers, :through => :computer_owernships
+  has_many :bills
 end
