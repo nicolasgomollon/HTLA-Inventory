@@ -8,30 +8,30 @@
 #Screen,Hard Drive,Shell,Battery,Hinges,Keyboard
 acer_screen: 
     status: true
-    description: Screen
+    name: Screen
     computer_id: 1
 
 acer_hard_drive: 
     status: true
-    description: Hard Drive
+    name: Hard Drive
     computer_id: 1
     
 acer_battery: 
     status: true
-    description: Battery
+    name: Battery
     computer_id: 1
     
 acer_hinges: 
     status: true
-    description: Hinges
+    name: Hinges
     computer_id: 1
     
 acer_keyboard: 
     status: true
-    description: Keyboard
+    name: Keyboard
     computer_id: 1
 
 acer_shell: 
     status: true
-    description: Shell
+    name: Shell
     computer_id: 1

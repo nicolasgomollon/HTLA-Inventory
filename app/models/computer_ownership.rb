@@ -5,8 +5,8 @@ class ComputerOwnership < ActiveRecord::Base
   belongs_to :student
   
   def current?
-    return true if enddate.nil?
-    return false unless enddate >= Date.today
-    false
+    return true if self.enddate.nil?
+    return true if self.enddate >= Date.today
+    return false
   end
 end

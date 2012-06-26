@@ -14,7 +14,7 @@ griffin:
     studentid: 1
     classof: 2013
     
-bobby_tables:
+bobby:
     id: 3
     firstname: Bobby
     lastname: Tables

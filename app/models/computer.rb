@@ -11,5 +11,25 @@ class Computer < ActiveRecord::Base
     self.computer_ownerships.order("startdate DESC").each do |ownership|
       return ownership.student if ownership.current?
     end
+    return nil
   end
+  
+  def create_parts(template)
+    return false unless self.computer_parts.empty?
+    
+    template.parts.split(",").each do |part|
+      self.computer_parts.new(:name => part).save
+    end
+    
+    self.model = template.name if self.model.nil?
+    return true
+  end
+  
+  def parts
+    hash = {}
+    self.computer_parts.each do |part|
+      hash[part.name] = part
+    end
+    return hash
+  end  
 end
