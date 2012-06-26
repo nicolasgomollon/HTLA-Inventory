@@ -1,5 +1,11 @@
 
 class Admin::RepairsController < ApplicationController
+  def index
+    @closed = !params[:closed].nil?
+    @repairs = !@closed ? RepairOrder.where(:enddate => nil) :
+      RepairOrder.where(RepairOrder.arel_table[:enddate].not_eq(nil))
+  end
+  
   def new
     computer = Computer.find(params[:computer_id]) unless params[:computer_id].nil?
     @tag = computer.idtag unless computer.nil?

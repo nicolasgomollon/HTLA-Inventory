@@ -1,0 +1,15 @@
+<%= !@closed ? "Open" : "Closed" %> Repair Orders. <%= link_to "See "+ (@closed ? "Open" : "Closed") + " Repair Orders", admin_repair_orders_path() + (@closed ? "" : "?closed=true")%>
+<table>
+	<tr>
+		<th>Started</th>
+		<th>Computer</th>
+		<th>Repair Description</th>
+	</tr>
+<% @repairs.each do |repair| %>
+	<tr>
+		<td><%= link_to repair.startdate.to_s, admin_repair_order_path(repair) %></td>
+		<td><%= link_to repair.computer.idtag, admin_computer_path(repair.computer) %></td>
+		<td><%= repair.activities.first.desc %></td>
+	</tr>
+<% end %>
+</table>
