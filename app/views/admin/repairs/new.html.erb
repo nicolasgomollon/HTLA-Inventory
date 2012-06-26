@@ -1,0 +1,14 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#datepicker").datepicker({dateFormat:"yy-mm-dd"})
+	})
+</script>
+<%= form_for [:admin, @repair] do |f| %>
+	<%= label_tag :computer_tag, 'Computer Tag:' %>
+	<%= text_field_tag :computer_tag, @tag %>
+	<%= label_tag :date, "Start Date:" %>
+	<%= text_field_tag(:date, Date.today.to_s, :id=>"datepicker") %>
+	<%= label_tag :desc, "Description of Repair:" %>
+	<%= text_area_tag :desc %>
+	<%= f.submit %>
+<% end %>

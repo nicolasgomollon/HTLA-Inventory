@@ -1,0 +1,18 @@
+Repair for: <%= @repair.computer.idtag %><br/>
+Opened on: <%= @repair.startdate %> <br/>
+
+Activity
+<table>
+	<tr>
+		<th>Date</th>
+		<th>Message</th>
+		<th>Description</th>
+	</tr>
+	<% @repair.activities.each do |activity| %>
+	<tr>
+		<td><%= activity.date %></td>
+		<td><%= activity.message %></td>
+		<td><%= activity.desc %></td>
+	</tr>
+	<% end %>
+</table>

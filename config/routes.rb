@@ -53,6 +53,7 @@ HTLAInventory::Application.routes.draw do
     resources :ownerships
     resources :computers
     resources :templates
+    resources :repairs, :as => :repair_orders
     root :to => "admin#index"
   end
 

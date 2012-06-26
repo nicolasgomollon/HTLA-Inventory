@@ -5,5 +5,5 @@ class Computer < ActiveRecord::Base
   
   has_many :computer_ownerships
   has_many :students, :through => :computer_ownerships
-  has_mant :repair_orders
+  has_many :repair_orders
 end
