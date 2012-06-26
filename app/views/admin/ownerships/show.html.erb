@@ -1,4 +1,4 @@
-Computer Tag: <%= @ownership.computer.idtag %> <br/>
+Computer Tag: <%= link_to @ownership.computer.idtag, [:admin, @ownership.computer] %> <br/>
 Owner Name:   <%= @ownership.student.firstname %> <%= @ownership.student.lastname %> <br/>
 Start Date: <%= @ownership.startdate %> <br/>
 End Date: <%= @ownership.enddate %> <br/>

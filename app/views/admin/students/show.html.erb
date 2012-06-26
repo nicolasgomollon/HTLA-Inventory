@@ -9,10 +9,11 @@
 	</tr>
 <% @student.computer_ownerships.each do |ownership| %>
 	<tr>
-		<td><%= ownership.computer.idtag %></td>
+		<td><%= link_to ownership.computer.idtag, [:admin, ownership.computer] %></td>
 		<td><%= ownership.startdate %></td>
 		<td><%= ownership.enddate %></td>
 		<td><%= link_to "Show", admin_ownership_path(ownership.id) %>
 	</tr>
 <% end %>
 </table>
+<%= link_to "Add Computer to Account", new_admin_computer_ownership_path() + "/?student_id=#{@student.id}"%>

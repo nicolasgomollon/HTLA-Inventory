@@ -50,7 +50,7 @@ HTLAInventory::Application.routes.draw do
   #   end
   namespace :admin do
     resources :students
-    resources :ownerships
+    resources :ownerships, :as => :computer_ownerships
     resources :computers
     resources :templates
     resources :repairs, :as => :repair_orders
