@@ -1,13 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  firstname: MyString
-  lastname: MyString
-  studentid: 
-  classof: 
+julian:
+    id: 1
+    firstname: Julian
+    lastname: Moore
+    studentid: 10082
+    classof: 2012
 
-two:
-  firstname: MyString
-  lastname: MyString
-  studentid: 
-  classof: 
+griffin:
+    id: 2
+    firstname: John
+    lastname: Smith
+    studentid: 1
+    classof: 2013
+    
+bobby_tables:
+    id: 3
+    firstname: Bobby
+    lastname: Tables
+    studentid: 2

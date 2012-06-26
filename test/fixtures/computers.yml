@@ -1,15 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  idtag: MyString
-  serial: MyString
-  brand: MyString
-  model: MyString
-  location: MyString
+acer:
+    id: 1
+    idtag: ACERL16
+    serial: LUSAL0B1370114FD241601
+    model: ACER Aspire One 532h 
 
-two:
-  idtag: MyString
-  serial: MyString
-  brand: MyString
-  model: MyString
-  location: MyString
+hp:
+    id: 2
+    idtag: HPL01
+    serial: CNU8252V3S
+    model: HP Mini 2133

@@ -1,0 +1,5 @@
+repair_hp_screen:
+    id: 1
+    computer_id: 2
+    startdate: <%= 1.days.ago.to_s(:db) %>
+    

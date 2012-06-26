@@ -1,0 +1,15 @@
+repair_hp_screen_bill:
+    repair_order_id: 1
+    desc: Screen replacement cost
+    amount: 125.00
+    paid: false
+    labor: false
+    student_id: 3
+    
+repair_hp_screen_labor:
+    repair_order_id: 1
+    desc: Labor for screen replacement
+    amount: 25.00
+    paid: false
+    labor: true
+    student_id: 3

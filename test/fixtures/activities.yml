@@ -1,11 +1,10 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-# This model initially had no columns defined.  If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+repair_hp_screen_first:
+    repair_order_id: 1
+    date: <%= 1.days.ago.to_s(:db) %>
+    message: <%= Activity::Messages[:created] %>
+    desc: HPL01 has a broken screen, must be replaced.
+    
+repair_hp_screen_second:
+    repair_order_id: 2
+    date: <%= Date.today.to_s(:db) %>
+    desc: Ordered and received screen from eBay reseller

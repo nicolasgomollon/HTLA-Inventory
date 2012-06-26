@@ -4,8 +4,34 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+
+#Screen,Hard Drive,Shell,Battery,Hinges,Keyboard
+acer_screen: 
+    status: true
+    description: Screen
+    computer_id: 1
+
+acer_hard_drive: 
+    status: true
+    description: Hard Drive
+    computer_id: 1
+    
+acer_battery: 
+    status: true
+    description: Battery
+    computer_id: 1
+    
+acer_hinges: 
+    status: true
+    description: Hinges
+    computer_id: 1
+    
+acer_keyboard: 
+    status: true
+    description: Keyboard
+    computer_id: 1
+
+acer_shell: 
+    status: true
+    description: Shell
+    computer_id: 1

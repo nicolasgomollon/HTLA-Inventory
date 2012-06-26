@@ -1,9 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  startdate: 2012-06-10
-  enddate: 2012-06-10
+julian_acer:
+    computer_id: 1
+    student_id: 1
+    startdate: 2011-08-17
+    enddate: 2012-05-31
+    
+john_hp:
+    computer_id: 2
+    student_id: 2
+    startdate: 2011-08-17
+    enddate: 2012-05-31
+    
+bobby_hp:
+    computer_id: 2
+    student_id: 3
+    startdate: 2012-06-01
+    enddate: <%= Date.today.to_s(:db) %>
+    
 
-two:
-  startdate: 2012-06-10
-  enddate: 2012-06-10

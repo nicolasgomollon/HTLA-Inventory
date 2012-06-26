@@ -4,8 +4,10 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+acer:
+    name: ACER Aspire One 532h
+    parts: Screen,Hard Drive,Shell,Battery,Hinges,Keyboard
+    
+hp:
+    name: HP Mini 2133
+    parts: Screen,Hard Drive,Shell,Battery,Hinges,Keyboard
