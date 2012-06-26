@@ -1,4 +1,4 @@
-Repair for: <%= link_to @repair.computer.idtag, admin_computer_path(@repair.computer) %><br/>
+Repair for: <%= @repair.computer.idtag %><br/>
 Opened on: <%= @repair.startdate %> <br/>
 
 Activity
@@ -16,6 +16,11 @@ Activity
 	</tr>
 	<% end %>
 </table><br/>
-<% if @repair.enddate.nil? %>
-	<%= link_to "Edit", edit_admin_repair_order_path(@repair) %>
+
+<%= form_for [:admin, @repair] do |f| %>
+	<%= label_tag :desc, "Update:" %>
+	<%= text_area_tag :desc %>
+	<%= label_tag :close, "Close?" %>
+	<%= check_box_tag :close %>
+	<%= f.submit %>
 <% end %>

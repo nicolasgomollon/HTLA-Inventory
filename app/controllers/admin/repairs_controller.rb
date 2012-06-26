@@ -21,4 +21,24 @@ class Admin::RepairsController < ApplicationController
   def show
     @repair = RepairOrder.find(params[:id])
   end
+  
+  def edit
+    @repair = RepairOrder.find(params[:id])
+    
+    redirect_to admin_repair_order_path(@repair) unless @repair.enddate.nil?
+  end
+  
+  def update
+    repair = RepairOrder.find(params[:id])
+    
+    repair.enddate = Date.today if params[:close]
+    ##TODO association as in #create
+    activity = repair.activities.new(:date => Date.today, :desc => params[:desc])
+    activity.message = Activity::Messages[:closed] if params[:close]
+    
+    repair.save
+    activity.save
+    
+    redirect_to admin_repair_order_path(repair)
+  end
 end

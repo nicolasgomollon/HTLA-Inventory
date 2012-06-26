@@ -1,6 +1,7 @@
 class Activity < ActiveRecord::Base
   Messages = { 
-    :created => "Created New Repair Order"
+    :created => "Created New Repair Order",
+    :closed  => "Closed Repair Order"
   }
   
   attr_accessible :date, :desc, :message
