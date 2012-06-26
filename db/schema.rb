@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120624234757) do
+ActiveRecord::Schema.define(:version => 20120626072928) do
 
   create_table "activities", :force => true do |t|
     t.date     "date"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20120624234757) do
     t.boolean "labor"
     t.boolean "paid",            :default => false
     t.integer "repair_order_id"
+    t.integer "student_id"
   end
 
   create_table "computer_ownerships", :force => true do |t|

@@ -9,6 +9,10 @@ class Admin::BillsController < ApplicationController
     @repair = RepairOrder.find(params[:repair_id])
     @bill = @repair.bills.new
     @bill.update_attributes(params[:bill])
+    
+    student = @repair.computer.get_current_student
+    @bill.student = student unless student.nil?  
+    
     @bill.save
     
     redirect_to [:admin, @bill]

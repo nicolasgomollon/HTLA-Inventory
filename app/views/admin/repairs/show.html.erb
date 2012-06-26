@@ -26,7 +26,7 @@ Bills
 	</tr>
 	<% @repair.bills.each do |bill| %>
 	<tr>
-		<td><%= bill.amount %></td>
+		<td><%=link_to bill.amount, [:admin, bill] %></td>
 		<td><%= bill.labor ? "Yes" : "No" %></td>
 		<td class="<%= bill.paid ? "good" : "bad" %>"><%= bill.paid ? "Yes" : "No" %></td>
 	</tr>
