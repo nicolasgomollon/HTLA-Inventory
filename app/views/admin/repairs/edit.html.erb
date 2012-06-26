@@ -1,4 +1,4 @@
-Repair for: <%= @repair.computer.idtag %><br/>
+Repair for: <%= link_to @repair.computer.idtag, admin_computer_path(@repair.computer) %><br/>
 Opened on: <%= @repair.startdate %> <br/>
 
 Activity

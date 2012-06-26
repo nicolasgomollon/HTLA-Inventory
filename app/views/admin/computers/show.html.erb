@@ -34,3 +34,22 @@ Parts:
 	</tr>
 <% end %>
 </table>
+
+Repair Orders:
+<table>
+	<tr>
+		<th>Started</th>
+		<th>Computer</th>
+		<th>Repair Description</th>
+		<th>Ended</th>
+	</tr>
+<% @computer.repair_orders.each do |repair| %>
+	<tr>
+		<td><%= link_to repair.startdate.to_s, admin_repair_order_path(repair) %></td>
+		<td><%= link_to repair.computer.idtag, admin_computer_path(repair.computer) %></td>
+		<td><%= repair.activities.first.desc %></td>
+		<td class="<%= repair.enddate.nil? ? "bad" : "" %>"> <%= repair.enddate %></td>
+	</tr>
+<% end %>
+</table>
+<%= link_to "Start Repair Order", new_admin_repair_order_path() + "/?computer_id=#{@computer.id}" %>
