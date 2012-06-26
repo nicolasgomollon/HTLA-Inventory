@@ -16,6 +16,6 @@ bobby_hp:
     computer_id: 2
     student_id: 3
     startdate: 2012-06-01
-    enddate: <%= Date.today.to_s(:db) %>
+    enddate: <%= 1.month.from_now.to_s(:db) %>
     
 

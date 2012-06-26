@@ -7,7 +7,6 @@
 
 #Screen,Hard Drive,Shell,Battery,Hinges,Keyboard
 acer_screen: 
-    status: true
     name: Screen
     computer_id: 1
 
