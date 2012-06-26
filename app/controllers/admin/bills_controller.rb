@@ -1,8 +1,16 @@
 
 class Admin::BillsController < ApplicationController
+  Messages = {
+    :repair_closed => "This repair is closed!"
+  }
+  
   def new
     @repair = RepairOrder.find(params[:repair_id])
-    @bill = @repair.bills.new
+    if @repair.open? then
+      @bill = @repair.bills.new
+    else
+      @error = Messages[:repair_closed]
+    end
   end
   
   def create

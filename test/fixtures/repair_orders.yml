@@ -3,3 +3,9 @@ repair_hp_screen:
     computer_id: 2
     startdate: <%= 1.days.ago.to_s(:db) %>
     
+repair_hp_keyboard:
+    id: 2
+    computer_id: 2
+    startdate: <%= 2.months.ago.to_s(:db) %>
+    enddate: <%= 1.days.ago.to_s(:db) %>
+    

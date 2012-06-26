@@ -27,3 +27,6 @@ Computer.find(2).create_parts(ComputerTemplate.find(2))
 Computer.find(1).computer_ownerships.new(:student_id => 1, :startdate => Date.parse("2011-08-17"), :enddate => Date.parse("2012-05-31")).save
 Computer.find(2).computer_ownerships.new(:student_id => 3, :startdate => Date.parse("2011-08-17"), :enddate => Date.parse("2012-05-31")).save
 Computer.find(2).computer_ownerships.new(:student_id => 2, :startdate => Date.parse("2012-06-01"), :enddate => 1.month.from_now).save
+
+Computer.find(2).repair_orders.new.open("Broken screen").save
+Computer.find(1).repair_orders.new(:startdate => 1.months.ago, :enddate => 1.days.ago).open("Replace keyboard").close("Replaced keyboard").save

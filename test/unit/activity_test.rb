@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ActivityTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "default date is today" do
+    assert_equal Activity.new.date, Date.today
+  end
 end

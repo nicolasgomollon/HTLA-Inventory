@@ -1,3 +1,4 @@
+<% if @error.nil? then %>
 <%= form_for [:admin, @bill] do |f| %>
 	<%= f.label :desc, "Description" %>
 	<%= f.text_field :desc %>
@@ -7,4 +8,8 @@
 	<%= f.check_box :labor%>
 	<%= hidden_field_tag :repair_id, @repair.id %>
 	<%= f.submit %>
+<% end %>
+<% else %>
+<%= @error %>
+<% if !@repair.nil? %>Return to <%= link_to "Repair Order", [:admin, @repair] %><% end %>
 <% end %>
