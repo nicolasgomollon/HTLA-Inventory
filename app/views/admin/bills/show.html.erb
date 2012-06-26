@@ -1,0 +1,6 @@
+$<%= @bill.amount %> For <%= link_to "Repair Order", [:admin, @bill.repair_order] %> on 
+<%= link_to @bill.repair_order.computer.idtag, [:admin, @bill.repair_order.computer] %>
+<% if !@bill.student.nil? %>
+	billed to <%=link_to @bill.student.nicename, [:admin, @bill.student] %>
+<% end %>
+<br/> Currently: <span <%= showbad @bill.paid %>><%= @bill.paid ? "Paid" : "Unpaid" %></span>

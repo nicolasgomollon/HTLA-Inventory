@@ -16,6 +16,23 @@ Activity
 	</tr>
 	<% end %>
 </table><br/>
+
+Bills
+<table>
+	<tr>
+		<th>Amount</th>
+		<th>Labor?</th>
+		<th>Paid?</th>
+	</tr>
+	<% @repair.bills.each do |bill| %>
+	<tr>
+		<td><%= bill.amount %></td>
+		<td><%= bill.labor ? "Yes" : "No" %></td>
+		<td class="<%= bill.paid ? "good" : "bad" %>"><%= bill.paid ? "Yes" : "No" %></td>
+	</tr>
+	<% end %>
+</table>
 <% if @repair.enddate.nil? %>
 	<%= link_to "Edit", edit_admin_repair_order_path(@repair) %>
+	<%= link_to "Add Bill", new_admin_bill_path() + "/?repair_id=#{@repair.id}"%>
 <% end %>

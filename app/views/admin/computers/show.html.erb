@@ -11,7 +11,7 @@ Ownerships:
 	</tr>
 <% @computer.computer_ownerships.each do |ownership| %>
 	<tr>
-		<td><%= ownership.student.firstname %> <%= ownership.student.lastname %></td>
+		<td><%= link_to ownership.student.nicename, [:admin, ownership.student] %></td>
 		<td><%= ownership.startdate %></td>
 		<td><%= ownership.enddate %></td>
 		<td><%= ownership.current?%></td>

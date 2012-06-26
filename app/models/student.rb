@@ -4,4 +4,8 @@ class Student < ActiveRecord::Base
   has_many :computer_ownerships
   has_many :computers, :through => :computer_owernships
   has_many :bills
+  
+  def nicename
+    "#{self.firstname} #{self.lastname}"
+  end
 end

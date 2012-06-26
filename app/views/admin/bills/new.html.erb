@@ -1,0 +1,10 @@
+<%= form_for [:admin, @bill] do |f| %>
+	<%= f.label :desc, "Description" %>
+	<%= f.text_field :desc %>
+	<%= f.label :amount, "Amount" %>
+	<%= f.text_field :amount %>
+	<%= f.label :labor, "Labor?" %>
+	<%= f.check_box :labor%>
+	<%= hidden_field_tag :repair_id, @repair.id %>
+	<%= f.submit %>
+<% end %>
