@@ -27,4 +27,11 @@ class Admin::OwnershipsControllerTest < ActionController::TestCase
     assert_equal computers(:acer).id, assigns(:ownership).computer_id
     assert_redirected_to admin_computer_ownership_path(assigns(:ownership))
   end
+  
+  test "ownership show" do
+    get :show, {:id => computer_ownerships(:julian_acer).id}
+    
+    assert_response :success
+    assert_equal computer_ownerships(:julian_acer), assigns(:ownership)
+  end
 end
