@@ -34,7 +34,7 @@ class RepairOrderTest < ActiveSupport::TestCase
   end
   
   test "open? works properly" do
-    assert repair_orders(:repair_hp_screen).open?
-    assert !repair_orders(:repair_hp_keyboard).open?
+    assert repair_orders(:repair_hp_screen).open?, ":repair_hp_screen is open, not closed!"
+    assert !repair_orders(:repair_hp_keyboard).open?, ":repair_hp_keyboard is closed, not open!"
   end
 end

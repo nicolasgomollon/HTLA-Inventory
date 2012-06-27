@@ -15,6 +15,11 @@ class Admin::BillsController < ApplicationController
   
   def create
     @repair = RepairOrder.find(params[:repair_id])
+    if !@repair.open? then
+      flash[:error] = Messages[:repair_closed]
+      redirect_to edit_admin_repair_order_path(@repair)
+      return
+    end
     @bill = @repair.bills.new
     @bill.update_attributes(params[:bill])
     

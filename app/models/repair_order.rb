@@ -19,7 +19,7 @@ class RepairOrder < ActiveRecord::Base
   
   def open?
     return true if self.enddate.nil?
-    return true if self.enddate >= Date.today
+    return true if self.enddate > Date.today
     return false
   end
   
