@@ -4,11 +4,11 @@ class Admin::TemplatesController < ApplicationController
   end
   
   def create
-    template = ComputerTemplate.new(:name => params[:name],
+    @template = ComputerTemplate.new(:name => params[:name],
                                     :parts => params[:parts])
-    template.save
+    @template.save
     
-    redirect_to admin_template_path(template)
+    redirect_to admin_template_path(@template)
   end
   
   def show
