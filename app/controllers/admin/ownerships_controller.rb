@@ -17,16 +17,16 @@ class Admin::OwnershipsController < ApplicationController
   end
   
   def create
-    student = Student.where(:studentid => params[:computer_ownership][:student_id]).first     
-    student = Student.find(params[:computer_ownership][:student_id]) if student.nil?
+    @student = Student.where(:studentid => params[:computer_ownership][:student_id]).first     
+    @student = Student.find(params[:computer_ownership][:student_id]) if @student.nil?
     
-    computer = Computer.where(:idtag => params[:computer_ownership][:computer_id]).first
-    computer = Computer.find(params[:computer_ownership][:computer_id]) if computer.nil? 
+    @computer = Computer.where(:idtag => params[:computer_ownership][:computer_id]).first
+    @computer = Computer.find(params[:computer_ownership][:computer_id]) if @computer.nil? 
     
-    ownership = student.computer_ownerships.new(:computer_id => computer.id, :startdate => Date.parse(params[:date]))
-    ownership.save
+    @ownership = @student.computer_ownerships.new(:computer_id => @computer.id, :startdate => Date.parse(params[:date]))
+    @ownership.save
     
-    redirect_to admin_ownership_path(ownership)
+    redirect_to admin_computer_ownership_path(@ownership)
   end
   
   def show
