@@ -46,15 +46,15 @@ class Admin::ComputersController < ApplicationController
   end
   
   def create
-    template = ComputerTemplate.find(params[:template_id])
-    computer = Computer.new()
-    computer.update_attributes(params[:computer])
-    computer.brand = template.name
-    template.parts.split(",").each do |part|
-      computer.computer_parts.new(:name => part)
+    @template = ComputerTemplate.find(params[:template_id])
+    @computer = Computer.new()
+    @computer.update_attributes(params[:computer])
+    @computer.brand = @template.name
+    @template.parts.split(",").each do |part|
+      @computer.computer_parts.new(:name => part)
     end
-    computer.save
+    @computer.save
     
-    redirect_to edit_admin_computer_path(computer)
+    redirect_to edit_admin_computer_path(@computer)
   end
 end
