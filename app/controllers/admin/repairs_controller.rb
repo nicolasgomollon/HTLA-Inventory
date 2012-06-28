@@ -14,14 +14,14 @@ class Admin::RepairsController < ApplicationController
   
   def create
     computer = Computer.where(:idtag => params[:computer_tag]).first
-    repair = computer.repair_orders.new(:startdate => Date.parse(params[:date]))
+    @repair = computer.repair_orders.new(:startdate => Date.parse(params[:date]))
     ## TODO, associate activity with the logged in student (ancillary, logins...)
-    activity = repair.activities.new(:desc => params[:desc], :date => Date.today, :message => Activity::Messages[:created])
+    @activity = @repair.activities.new(:desc => params[:desc], :date => Date.today, :message => Activity::Messages[:created])
     
-    repair.save
-    activity.save
+    @repair.save
+    @activity.save
     
-    redirect_to admin_repair_order_path(repair)
+    redirect_to admin_repair_order_path(@repair)
   end
   
   def show
