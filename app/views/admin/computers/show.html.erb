@@ -1,55 +1,75 @@
 Tag: <%= @computer.idtag %>
 Serial: <%= @computer.serial %>
 <%= link_to "Edit Computer", edit_admin_computer_path(@computer) %>
-Ownerships:
-<table>
-	<tr>
-		<th>Owner</th>
-		<th>Start</th>
-		<th>End</th>
-		<th>Current</th>
-	</tr>
-<% @computer.computer_ownerships.each do |ownership| %>
-	<tr>
-		<td><%= link_to ownership.student.nicename, [:admin, ownership.student] %></td>
-		<td><%= ownership.startdate %></td>
-		<td><%= ownership.enddate %></td>
-		<td><%= ownership.current?%></td>
-	</tr>
-<% end %>
-</table>
+<div class="row">
+	<div class="span4">
+		<table class="table table-striped table-bordered table-condensed">
+			<thead>
+				<tr>
+					<th>Owner</th>
+					<th>Start</th>
+					<th>End</th>
+					<th>Current</th>
+				</tr>
+			</thead>
+			<tbody>
+			<% @computer.computer_ownerships.each do |ownership| %>
+				<tr>
+					<td><%= link_to ownership.student.nicename, [:admin, ownership.student] %></td>
+					<td><%= ownership.startdate %></td>
+					<td><%= ownership.enddate %></td>
+					<td><%= ownership.current?%></td>
+				</tr>
+			<% end %>
+			</tbody>
+			<caption>Ownerships</caption>
+		</table>
+	</div>
 
-Parts:
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Status</th>
-		<th>Description</th>
-	</tr>
-<% @computer.computer_parts.each do |part| %>
-	<tr>
-		<td><%= part.name %></td>
-		<td class="<%= part.status ? "good" : "bad" %>"><%= part.status ? "Good" : "Bad" %> </td>
-		<td><%= part.description %></td>
-	</tr>
-<% end %>
-</table>
+	<div class="span">
+		<table class="table table-striped table-bordered table-condensed">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Status</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+			<% @computer.computer_parts.each do |part| %>
+				<tr>
+					<td><%= part.name %></td>
+					<td><span class="label label-<%= part.status ? "success" : "warning" %>"><%= part.status ? "Good" : "Bad" %></span> </td>
+					<td><%= part.description %></td>
+				</tr>
+			<% end %>
+			</tbody>
+			<caption>Parts</caption>
+		</table>
+	</div>
 
-Repair Orders:
-<table>
-	<tr>
-		<th>Started</th>
-		<th>Computer</th>
-		<th>Repair Description</th>
-		<th>Ended</th>
-	</tr>
-<% @computer.repair_orders.each do |repair| %>
-	<tr>
-		<td><%= link_to repair.startdate.to_s, admin_repair_order_path(repair) %></td>
-		<td><%= link_to repair.computer.idtag, admin_computer_path(repair.computer) %></td>
-		<td><%= repair.activities.first.desc %></td>
-		<td class="<%= repair.enddate.nil? ? "bad" : "" %>"> <%= repair.enddate %></td>
-	</tr>
-<% end %>
-</table>
-<%= link_to "Start Repair Order", new_admin_repair_order_path() + "/?computer_id=#{@computer.id}" %>
+	<div class="span4">
+		<table class="table table-striped table-bordered table-condensed">
+			<thead>
+				<tr>
+					<th>Started</th>
+					<th>Computer</th>
+					<th>Repair Description</th>
+					<th>Ended</th>
+				</tr>
+			</thead>
+			<tbody>
+		<% @computer.repair_orders.each do |repair| %>
+			<tr>
+				<td><%= link_to repair.startdate.to_s, admin_repair_order_path(repair) %></td>
+				<td><%= link_to repair.computer.idtag, admin_computer_path(repair.computer) %></td>
+				<td><%= repair.activities.first.desc %></td>
+				<td class="<%= repair.enddate.nil? ? "bad" : "" %>"> <%= repair.enddate %></td>
+			</tr>
+		<% end %>
+			</tbody>
+			<caption>Repair Orders</caption>
+		</table>
+		<%= link_to "Start Repair Order", new_admin_repair_order_path() + "/?computer_id=#{@computer.id}" %>
+	</div>
+</div>

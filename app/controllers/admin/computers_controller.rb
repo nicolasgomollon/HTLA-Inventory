@@ -1,5 +1,5 @@
 
-class Admin::ComputersController < ApplicationController
+class Admin::ComputersController < Admin::AdminController
   def index
     query = ""
     query_array = []

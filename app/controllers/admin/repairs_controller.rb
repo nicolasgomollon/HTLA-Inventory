@@ -1,5 +1,5 @@
 
-class Admin::RepairsController < ApplicationController
+class Admin::RepairsController < Admin::AdminController
   def index
     @closed = !params[:closed].nil?
     @repairs = !@closed ? RepairOrder.where(:enddate => nil) :

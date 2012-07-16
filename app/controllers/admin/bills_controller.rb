@@ -1,5 +1,5 @@
 
-class Admin::BillsController < ApplicationController
+class Admin::BillsController < Admin::AdminController
   Messages = {
     :repair_closed => "This repair is closed!"
   }

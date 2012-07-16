@@ -1,5 +1,5 @@
 
-class Admin::OwnershipsController < ApplicationController
+class Admin::OwnershipsController < Admin::AdminController
   def index
   end
   
