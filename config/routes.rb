@@ -55,6 +55,7 @@ HTLAInventory::Application.routes.draw do
     resources :templates
     resources :repairs, :as => :repair_orders
     resources :bills
+    resources :users, :as => :admin_users
     get "login" => "sessions#new" 
     post "login" => "sessions#create"
     get "logout" => "sessions#destroy"

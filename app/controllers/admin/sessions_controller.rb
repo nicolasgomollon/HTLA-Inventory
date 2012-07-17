@@ -1,4 +1,3 @@
-
 class Admin::SessionsController < Admin::AdminController	
 	skip_before_filter :check_sign_in, :except => [:destroy]
 

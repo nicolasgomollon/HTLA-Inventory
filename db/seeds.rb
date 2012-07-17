@@ -22,7 +22,8 @@ computers = Computer.create([
 ])
 
 users = AdminUser.create([
-	{:username => "jmoore", :password => "admin", :fullname => "Julian R. Moore"}
+	{:username => "jmoore", :password => "admin", :fullname => "Julian R. Moore"},
+  {:username => "jdoe", :password => "admin", :fullname => "John Doe"}
 ])
 
 for idx in 1..15 
