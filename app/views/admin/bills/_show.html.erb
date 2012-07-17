@@ -13,7 +13,7 @@
 		<tr>
 			<td><%=link_to bill.desc, [:admin, bill] %></td>
 			<td><%=link_to bill.repair_order.activities.first.desc, [:admin, bill.repair_order] %></td>
-			<td><%=link_to bill.student.nicename, [:admin, bill.student] %></td>
+			<td><% if bill.student %><%=link_to bill.student.nicename, [:admin, bill.student] %><% end %></td>
 			<td><span class="label label-<%= bill.paid ? "success" : "warning" %>"><%= bill.amount %></span></td>
 		</tr>
 	</tbody>

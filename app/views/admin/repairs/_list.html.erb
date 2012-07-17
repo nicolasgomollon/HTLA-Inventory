@@ -1,0 +1,21 @@
+<table class="table table-striped table-bordered table-condensed">
+	<thead>
+		<tr>
+			<th>Computer</th>
+			<th>Repair Description</th>
+			<th>Start / End</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% repairs.each do |repair| %>
+			<% unless repair.new_record? %>
+			<tr>
+				<td><%= link_to repair.computer.idtag, admin_computer_path(repair.computer) %></td>
+				<td><%= link_to repair.activities.first.desc, [:admin, repair] %></td>
+				<td><%= repair.startdate %> <% if repair.enddate %> / <%= repair.enddate %> <% end %></td>
+			</tr>
+			<% end %>
+		<% end %>
+	</tbody>
+	<caption>Repair Orders</caption>
+</table>

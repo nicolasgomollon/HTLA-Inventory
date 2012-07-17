@@ -17,6 +17,7 @@ class Admin::ComputersController < Admin::AdminController
   
   def show
     @computer = Computer.find(params[:id])
+    @repair = @computer.repair_orders.new
   end
   
   def new

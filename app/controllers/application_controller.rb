@@ -11,4 +11,12 @@ class ApplicationController < ActionController::Base
     end
     query_string
   end
+
+  def like_query on, field, value
+    query = ""
+    query_array = []
+    query = query_helper field, value, query, query_array
+
+    on.where(query, *query_array)
+  end
 end

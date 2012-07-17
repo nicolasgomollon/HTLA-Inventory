@@ -13,8 +13,8 @@ class Admin::RepairsController < Admin::AdminController
   end
   
   def create
-    computer = Computer.where(:idtag => params[:computer_tag]).first
-    @repair = computer.repair_orders.new(:startdate => Date.parse(params[:date]))
+    @repair = RepairOrder.new
+    @repair.update_attributes(params[:repair_order])
     ## TODO, associate activity with the logged in student (ancillary, logins...)
     @activity = @repair.activities.new(:desc => params[:desc], :date => Date.today, :message => Activity::Messages[:created])
     

@@ -1,5 +1,5 @@
 class RepairOrder < ActiveRecord::Base
-  attr_accessible :startdate, :enddate
+  attr_accessible :startdate, :enddate, :computer_id
   
   after_initialize do
     self.startdate = Date.today

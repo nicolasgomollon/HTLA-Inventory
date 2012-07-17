@@ -1,6 +1,6 @@
-Tag: <%= @computer.idtag %>
-Serial: <%= @computer.serial %>
-<%= link_to "Edit Computer", edit_admin_computer_path(@computer) %>
+<div class="row">
+	<h3>Tag: <%= @computer.idtag %> Serial: <%= @computer.serial %></h3>
+</div>
 <div class="row">
 	<div class="span4">
 		<%= render "admin/ownerships/list", :ownerships => @computer.computer_ownerships %>
@@ -26,31 +26,21 @@ Serial: <%= @computer.serial %>
 			</tbody>
 			<caption>Parts</caption>
 		</table>
+		<%= link_to edit_admin_computer_path(@computer) do %>
+			<button class="btn btn-primary">Edit Computer</button>
+		<% end %>
 	</div>
 
 	<div class="span4">
-		<table class="table table-striped table-bordered table-condensed">
-			<thead>
-				<tr>
-					<th>Started</th>
-					<th>Computer</th>
-					<th>Repair Description</th>
-					<th>Ended</th>
-				</tr>
-			</thead>
-			<tbody>
-		<% @computer.repair_orders.each do |repair| %>
-			<tr>
-				<td><%= link_to repair.startdate.to_s, admin_repair_order_path(repair) %></td>
-				<td><%= link_to repair.computer.idtag, admin_computer_path(repair.computer) %></td>
-				<td><%= repair.activities.first.desc %></td>
-				<td class="<%= repair.enddate.nil? ? "bad" : "" %>"> <%= repair.enddate %></td>
-			</tr>
-		<% end %>
-			</tbody>
-			<caption>Repair Orders</caption>
-		</table>
-		<%= link_to new_admin_repair_order_path() + "/?computer_id=#{@computer.id}" do %>
+		<%= render "admin/repairs/list", :repairs => @computer.repair_orders %>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#datepicker").datepicker({dateFormat:"yy-mm-dd"})
+			})
+		</script>
+		<%= form_for [:admin, @repair] do |f| %>
+			<%= f.hidden_field :computer_id %>
+			<%= text_area_tag :desc, "", {:placeholder => "Description"} %>
 			<button class="btn btn-primary">New Repair Order</button>
 		<% end %>
 	</div>

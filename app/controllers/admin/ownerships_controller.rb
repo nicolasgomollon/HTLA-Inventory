@@ -17,11 +17,15 @@ class Admin::OwnershipsController < Admin::AdminController
   end
   
   def create
-    @student = Student.where(:studentid => params[:computer_ownership][:student_id]).first     
+    @students = like_query Student, :studentid, params[:computer_ownership][:student_id]
+    @student = @students.first unless @students.length == 0
     @student = Student.find(params[:computer_ownership][:student_id]) if @student.nil?
     
-    @computer = Computer.where(:idtag => params[:computer_ownership][:computer_id]).first
+    @computers = like_query Computer, :idtag, params[:computer_ownership][:computer_id]
+    @computer = @computers.first unless @computers.length == 0
     @computer = Computer.find(params[:computer_ownership][:computer_id]) if @computer.nil? 
+
+    #TODO check and do flash error if more than one computer
     
     @ownership = @student.computer_ownerships.new(:computer_id => @computer.id, :startdate => Date.parse(params[:date]))
     @ownership.save
