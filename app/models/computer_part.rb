@@ -10,4 +10,8 @@ class ComputerPart < ActiveRecord::Base
     self.description ||= ""
     self.status ||= true if self.status.nil?
   end
+
+  def dashname
+  	self.name.gsub(/\ +/,'-')
+  end
 end

@@ -1,29 +1,53 @@
-<%= form_for [:admin, @computer] do |f| %>
-	<%= f.label :idtag, "Tag" %>
-	<%= f.text_field :idtag %>
-	<table>
-		<tr>
-			<th>Part</th>
-			<th></th>
-			<th>Description</th>
-		</tr>
-		<% @computer.computer_parts.each do |part| %>
-			<%= fields_for :computer, part do |part_form| %>
+<%= form_for [:admin, @computer]  do |f| %>
+	<div class="row">
+	<div class="span6">
+	<table class="table table-striped table-bordered table-condensed">
+		<thead>
 			<tr>
-				<td><%= part.name %></td>
-				<td>
-					<%= part_form.radio_button :status, true, :id=>"part_#{part.id}_status_true", :name=> "part[#{part.id}][status]" %>
-					<%= label_tag "part_#{part.id}_status_true", 'Good' %>
-					<%= part_form.radio_button :status, false, :id=>"part_#{part.id}_status_false", :name=> "part[#{part.id}][status]" %>
-					<%= label_tag "part_#{part.id}_status_false", 'Bad' %>
-				</td>
-				<td>
-					<%= text_field_tag "part[#{part.id}][description]", part.description %>
-				</td>
-					<%= hidden_field_tag "part[#{part.id}][id]", part.id %>
+				<th>Part</th>
+				<th>Status</th>
+				<th>Description</th>
 			</tr>
+		</thead>
+		<tbody>
+			<% @computer.computer_parts.each do |part| %>
+				<%= f.fields_for :computer_parts, part do |part_form| %>
+				<tr>
+					<td><%= part.name %></td>
+					<td>
+						<div id="<%= part.dashname %>" class="btn btn-<%= part.status ? "success" : "danger"%>"><%= part.status ? "Good" : "Bad" %></div>
+						<%= part_form.hidden_field :status %>
+						<script>
+							$("#<%= part.dashname %>").bind('click',
+								function() {
+									$(this).toggleClass("btn-success")
+									$(this).toggleClass("btn-danger")
+
+									if ($(this).html() == "Good") {
+										$(this).html("Bad")
+										id = $("[value=<%= part.id %>]").attr("id").match(/\d/g)
+										$("#computer_computer_parts_attributes_"+id+"_status").attr("value","f") 
+									} else if ($(this).html() == "Bad") {
+										$(this).html("Good")
+										id = $("[value=<%= part.id %>]").attr("id").match(/\d/g)
+										$("#computer_computer_parts_attributes_"+id+"_status").attr("value","t") 
+									}
+								})
+						</script>
+					</td>
+					<td><%= part_form.text_field :description, {:placeholder => "Description"} %></td>
+				</tr>
+				<% end %>
 			<% end %>
-		<% end %>
+		</tbody>
+		<caption>Parts</caption>
 	</table>
-	<%= f.submit %>
+	</div>
+</div>
+<div class="row">
+	<div class="input-append">
+		<%= f.text_field :idtag, {:placeholder => "Tag"} %>
+		<%= submit_tag "Update Computer", {:class => "btn btn-primary"} %>
+	</div>
+</div>
 <% end %>
