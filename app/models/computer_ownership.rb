@@ -6,7 +6,6 @@ class ComputerOwnership < ActiveRecord::Base
   
   def current?
     return true if self.enddate.nil?
-    return true if self.enddate >= Date.today
     return false
   end
 end

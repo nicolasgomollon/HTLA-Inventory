@@ -32,4 +32,12 @@ class Admin::OwnershipsController < Admin::AdminController
   def show
     @ownership = ComputerOwnership.find(params[:id])
   end
+
+  def destroy
+    @ownership = ComputerOwnership.find(params[:id])
+    @ownership.enddate = Date.today
+    @ownership.save
+
+    redirect_to request.referer
+  end
 end

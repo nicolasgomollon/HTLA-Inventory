@@ -42,6 +42,7 @@
 
 	<div class="span6">
 		<%= render "admin/bills/show", :bills => @repair.bills %>
+		<% if @repair.open? %>
 			<%= form_for [:admin, @bill], :html => {:class => "form-inline"} do |f| %>
 				<%= f.text_field :desc, {:placeholder => "Description"} %>
 				<div id="labor_button" class="btn btn-warning" data-toggle="button">Labor</div>
@@ -50,5 +51,6 @@
 				<%= hidden_field_tag :repair_order_id, @bill.repair_order_id %>
 				<%= submit_tag "Create Bill", {:id => "bill_submit", :class => "btn"} %>
 			<% end %>
+		<% end %>
 	</div>
 </div>
