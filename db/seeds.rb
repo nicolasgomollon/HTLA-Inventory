@@ -21,6 +21,10 @@ computers = Computer.create([
   {:id => 2, :serial => "CNU8252V3S", :idtag => "HPL01" }
 ])
 
+users = AdminUser.create([
+	{:username => "jmoore", :password => "admin", :fullname => "Julian R. Moore"}
+])
+
 for idx in 1..15 
 	computer = Computer.create({:serial => "LUSAL0B1370114FD24"+ (idx < 10 ? "0" : "") + idx.to_s, :idtag => "ACERL" + (idx < 10 ? "0" : "") + idx.to_s})
 	computer.create_parts(ComputerTemplate.find(1))

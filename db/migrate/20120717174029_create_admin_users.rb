@@ -4,7 +4,6 @@ class CreateAdminUsers < ActiveRecord::Migration
     	t.text :password_digest
     	t.text :username
     	t.text :fullname
-    	t.index :username, :unique => true
       t.timestamps
     end
   end

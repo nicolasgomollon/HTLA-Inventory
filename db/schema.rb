@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120626072928) do
+ActiveRecord::Schema.define(:version => 20120717190849) do
 
   create_table "activities", :force => true do |t|
     t.date     "date"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(:version => 20120626072928) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
+
+  create_table "admin_users", :force => true do |t|
+    t.text     "password_digest"
+    t.text     "username"
+    t.text     "fullname"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.text     "remember_token"
+  end
+
+  add_index "admin_users", ["username"], :name => "index_admin_users_on_username", :unique => true
 
   create_table "bills", :force => true do |t|
     t.string  "desc"

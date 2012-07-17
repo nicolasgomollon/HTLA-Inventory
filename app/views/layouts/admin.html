@@ -27,6 +27,12 @@
             <li><%= link_to "Repairs", admin_repair_orders_path %></li>
             <li><%= link_to "Bills", admin_bills_path %></li>
             <li><%= link_to "Templates", admin_templates_path %></li>
+            <% if signed_in? %>
+              <li class="divider-vertical"></li>
+              <li>
+                <%= link_to "Logout", admin_logout_path %>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -34,8 +40,15 @@
   </div>
 
   <div class="container">
-    <div class="row">
-      <div class="span12"><%= yield %></div>
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+      <%= yield %>
+      <% if Rails.env.development? %>
+        <button class="btn" id="debug">Debug</button>
+        <%= debug(params) %>
+      <% end %>
     </div>
   </div>
 </body>

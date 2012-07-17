@@ -5,7 +5,6 @@ class AdminUser < ActiveRecord::Base
 
   before_save :create_remember_token
 
-  validates :password, :presence => { :on => :create }
   validates :username, :presence => true, :uniqueness => true
   validates :fullname, :presence => true
 

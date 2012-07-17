@@ -1,5 +1,6 @@
 class Admin::AdminController < ApplicationController
-	before_filter :signed_in?
+	before_filter :check_sign_in
+	helper_method :signed_in?, :signed_out?, :current_admin_user
 	layout 'admin'
 
 	def index
@@ -11,10 +12,17 @@ class Admin::AdminController < ApplicationController
 	end
 
 	def signed_in?
-		!!@current_user
+		!!current_admin_user
 	end
 
 	def signed_out?
 		!signed_in?
+	end
+
+	def check_sign_in
+		if !signed_in? then
+			flash[:info] = "You're not logged in!"
+			redirect_to admin_login_path
+		end
 	end
 end

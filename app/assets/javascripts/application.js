@@ -14,3 +14,10 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+$(document).ready(function() {
+	$("#debug").bind('click',function() {
+		$("pre.debug_dump").collapse().toggle()
+	})
+
+	$("pre.debug_dump").collapse().toggle()
+})
