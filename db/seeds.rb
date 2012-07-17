@@ -21,6 +21,11 @@ computers = Computer.create([
   {:id => 2, :serial => "CNU8252V3S", :idtag => "HPL01" }
 ])
 
+for idx in 1..15 
+	computer = Computer.create({:serial => "LUSAL0B1370114FD24"+ (idx < 10 ? "0" : "") + idx.to_s, :idtag => "ACERL" + (idx < 10 ? "0" : "") + idx.to_s})
+	computer.create_parts(ComputerTemplate.find(1))
+end
+
 Computer.find(1).create_parts(ComputerTemplate.find(1))
 Computer.find(2).create_parts(ComputerTemplate.find(2))
 

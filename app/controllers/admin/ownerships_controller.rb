@@ -26,7 +26,7 @@ class Admin::OwnershipsController < Admin::AdminController
     @ownership = @student.computer_ownerships.new(:computer_id => @computer.id, :startdate => Date.parse(params[:date]))
     @ownership.save
     
-    redirect_to admin_computer_ownership_path(@ownership)
+    redirect_to [:admin, @ownership.student]
   end
   
   def show

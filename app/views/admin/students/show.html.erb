@@ -1,9 +1,11 @@
-<%= @student.nicename %> <%= @student.studentid %> <br/>
+<div class="row"><h3><%= @student.nicename %> <%= @student.studentid %></h3> </div>
 
 <div class="row">
 	<div class="span6">
 		<%= render "admin/ownerships/list", :ownerships => @student.computer_ownerships %>
-		<%= link_to "Add Computer to Account", new_admin_computer_ownership_path() + "/?student_id=#{@student.id}"%>
+		<%= link_to new_admin_computer_ownership_path() + "/?student_id=#{@student.id}" do %>
+			<button class="btn btn-primary">Add Computer</button>
+		<% end %>
 	</div>
 
 	<div class="span6">

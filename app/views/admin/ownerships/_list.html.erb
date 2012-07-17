@@ -2,6 +2,7 @@
 <thead>
 	<tr>
 		<th>Computer</th>
+		<th>Student</th>
 		<th>Start/End</th>
 		<th></th>
 	</tr>
@@ -10,6 +11,7 @@
 <% ownerships.each do |ownership| %>
 	<tr>
 		<td><%= link_to ownership.computer.idtag, [:admin, ownership.computer] %></td>
+		<td><%= link_to ownership.student.nicename, [:admin, ownership.student] %></td>
 		<td><%= ownership.startdate %> <% if ownership.enddate %> / <%= ownership.enddate %> <% end %> </td>
 		<td>
 			<% if ownership.current? %>
