@@ -1,4 +1,4 @@
-<%= @student.firstname %> <%= @student.lastname %> <br/>
+<%= @student.nicename %> <%= @student.studentid %> <br/>
 
 <div class="row">
 	<div class="span6">
@@ -25,4 +25,27 @@
 		</table>
 		<%= link_to "Add Computer to Account", new_admin_computer_ownership_path() + "/?student_id=#{@student.id}"%>
 	</div>
+
+	<div class="span6">
+		<table class="table table-striped table-bordered table-condensed">
+			<thead>
+				<tr>
+					<th>Desc</th>
+					<th>Repair Order</th>
+					<th>Amount</th>
+				</tr>
+			</thead>
+			<tbody>
+			<% @student.bills.each do |bill| %>
+				<tr>
+					<td><%= bill.desc %></td>
+					<td><%= link_to bill.repair_order.activities.first.desc, [:admin, bill.repair_order] %></td>
+					<td><span class="label label-<%= bill.paid ? "successful" : "important" %>"><%= bill.amount %></span></td>
+				</tr>
+			<% end %>
+			</tbody>
+			<caption>Bills</caption>
+		</table>
+	</div>
+
 </div>

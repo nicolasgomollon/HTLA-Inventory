@@ -6,6 +6,8 @@ class Computer < ActiveRecord::Base
   has_many :computer_ownerships
   has_many :students, :through => :computer_ownerships
   has_many :repair_orders
+
+  accepts_nested_attributes_for :computer_parts
   
   def get_current_student
     self.computer_ownerships.order("startdate DESC").each do |ownership|

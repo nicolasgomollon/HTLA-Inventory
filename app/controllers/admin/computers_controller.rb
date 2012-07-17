@@ -4,7 +4,7 @@ class Admin::ComputersController < Admin::AdminController
     query = ""
     query_array = []
     query = query_helper :serial, params[:serial], query, query_array
-    query = query_helper :idtag, params[:tag], query, query_array
+    query = query_helper :idtag, params[:serial], query, query_array
 
     @computers = Computer.where(query, *query_array) unless query.empty?
   
