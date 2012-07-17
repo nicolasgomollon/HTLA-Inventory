@@ -10,23 +10,6 @@
 </div>
 <div class="row">
 	<div class="span6">
-		<table class="table table-striped table-bordered table-condensed">
-			<thead>
-				<tr>
-					<th>Started</th>
-					<th>Computer</th>
-					<th>Repair Description</th>
-				</tr>
-			</thead>
-		<% @repairs.each do |repair| %>
-			<tbody>
-				<tr>
-					<td><%= link_to repair.startdate.to_s, admin_repair_order_path(repair) %></td>
-					<td><%= link_to repair.computer.idtag, admin_computer_path(repair.computer) %></td>
-					<td><%= repair.activities.first.desc %></td>
-				</tr>
-			</tbody>
-		<% end %>
-		</table>
+		<%= render "list", :repairs => @repairs%>
 	</div>
 </div>

@@ -3,6 +3,16 @@ class Admin::BillsController < Admin::AdminController
   Messages = {
     :repair_closed => "This repair is closed!"
   }
+
+  def index
+    if params[:closed] then
+      @bills = Bill.where(:paid => true)
+    else
+      @bills = Bill.where(:paid => false)
+    end
+
+    @closed = params[:closed]
+  end
   
   def new
     @repair = RepairOrder.find(params[:repair_id])
