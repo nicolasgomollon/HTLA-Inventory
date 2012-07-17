@@ -6,7 +6,7 @@ class AdminUser < ActiveRecord::Base
 
   validates :username, :presence => true, :uniqueness => true
   validates :fullname, :presence => true
-  validates :password, :presence => true, :confirmation => true
+  validates :password, :confirmation => true, :presence => true
   validates :password_confirmation, :presence => true
 
   private

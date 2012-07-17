@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for [:admin, @user] do |f| %>
+			<%= render 'shared/error_messages', :errors => @user.errors %>
+			<%= f.label :username, "User Name"%>
+			<%= f.text_field :username %>
+
+			<%= f.label :fullname, "Full Name"%>
+			<%= f.text_field :fullname %>
+
+			<%= f.label :password %>
+			<%= f.password_field :password %>
+
+			<%= f.label :password_confirmation, "Confirmation" %>
+			<%= f.password_field :password_confirmation %>
+
+			<%= f.submit class: "btn btn-primary" %>
+		<% end %>
+	</div>
+</div>

@@ -1,5 +1,8 @@
 <div class="row">
 	<div class="span6">
+		<%= link_to new_admin_admin_user_path do %>
+			<button class="btn btn-success btn-large">New User</button>
+		<% end %>
 		<%= render 'list', :users => @users %>
 	</div>
 </div>

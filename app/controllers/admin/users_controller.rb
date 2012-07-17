@@ -20,4 +20,17 @@ class Admin::UsersController < Admin::AdminController
 	def show
 		@user = AdminUser.find(params[:id])
 	end
+
+	def new
+		@user = AdminUser.new
+	end
+
+	def create
+		@user = AdminUser.new(params[:admin_user])
+		if @user.save then
+			redirect_to admin_admin_users_path
+		else
+			render 'new'
+		end
+	end
 end
