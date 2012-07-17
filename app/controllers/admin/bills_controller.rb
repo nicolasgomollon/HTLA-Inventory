@@ -14,7 +14,7 @@ class Admin::BillsController < Admin::AdminController
   end
   
   def create
-    @repair = RepairOrder.find(params[:repair_id])
+    @repair = RepairOrder.find(params[:repair_order_id])
     if !@repair.open? then
       flash[:error] = Messages[:repair_closed]
       redirect_to edit_admin_repair_order_path(@repair)
@@ -28,7 +28,7 @@ class Admin::BillsController < Admin::AdminController
     
     @bill.save
     
-    redirect_to [:admin, @bill]
+    redirect_to [:admin, @repair]
   end
   
   def show

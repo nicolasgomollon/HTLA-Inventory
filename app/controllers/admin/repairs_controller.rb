@@ -26,12 +26,7 @@ class Admin::RepairsController < Admin::AdminController
   
   def show
     @repair = RepairOrder.find(params[:id])
-  end
-  
-  def edit
-    @repair = RepairOrder.find(params[:id])
-    
-    redirect_to admin_repair_order_path(@repair) unless @repair.enddate.nil?
+    @bill = @repair.bills.new
   end
   
   def update
