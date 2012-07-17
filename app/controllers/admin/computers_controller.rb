@@ -31,15 +31,7 @@ class Admin::ComputersController < Admin::AdminController
   
   def update
     @computer = Computer.find(params[:id])
-    @computer.update_attributes(params[:computer])
-    
-    params[:part].each do |key, part_params|
-      part = @computer.computer_parts.find(part_params[:id].to_i)
-      part.description = part_params[:description]
-      part.status = part_params[:status].to_bool
-      part.save
-    end 
-    
+    @computer.update_attributes(params[:computer])    
     @computer.save
     
     redirect_to admin_computer_path(@computer)

@@ -1,5 +1,5 @@
 class Computer < ActiveRecord::Base
-  attr_accessible :brand, :idtag, :location, :model, :serial, :number
+  attr_accessible :brand, :idtag, :location, :model, :serial, :number, :computer_parts_attributes
   
   has_many :computer_parts
   
