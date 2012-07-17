@@ -3,8 +3,17 @@ class Admin::StudentsController < Admin::AdminController
   def index
     query = ""
     query_array = []
-    query = query_helper 'firstname', params[:firstname], query, query_array
-    query = query_helper 'lastname', params[:lastname], query, query_array
+    if (params[:fullname]) then
+      names = params[:fullname].split(" ")
+      if names.length > 0 then
+        query = query_helper 'firstname', names[0], query, query_array
+        if names.length == 2
+          query = query_helper 'lastname', names[1], query, query_array
+        else
+          query = query_helper 'lastname', names[0], query, query_array
+        end
+      end
+    end
     query = query_helper 'studentid', params[:id], query, query_array
     
     @students = Student.where(query, *query_array) unless query.empty?

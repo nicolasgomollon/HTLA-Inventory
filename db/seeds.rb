@@ -7,8 +7,8 @@
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
 students = Student.create([
   {:id => 1, :firstname => "Julian", :lastname => "Moore", :studentid => 10082, :classof => 2012},
-  {:id => 2, :firstname => "John", :lastname => "Smith", :studentid => 10082, :classof => 2013},
-  {:id => 3, :firstname => "Bobby", :lastname => "Tables", :studentid => 10082, :classof => 2014}  
+  {:id => 2, :firstname => "John", :lastname => "Smith", :studentid => 10083, :classof => 2013},
+  {:id => 3, :firstname => "Bobby", :lastname => "Tables", :studentid => 10084, :classof => 2014}  
 ])
 
 templates = ComputerTemplate.create([
