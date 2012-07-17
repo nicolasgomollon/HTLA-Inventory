@@ -7,6 +7,9 @@ class Admin::ComputersController < Admin::AdminController
     query = query_helper :idtag, params[:serial], query, query_array
 
     @computers = Computer.where(query, *query_array) unless query.empty?
+    if @computers then
+      redirect_to [:admin, @computers.first] if @computers.length == 1
+    end
   
     @tag = params[:tag]
     @serial = params[:serial]

@@ -1,9 +1,4 @@
-<%= form_tag admin_students_path, :method=>'get', :html => {:class=>"form-inline"} do %>
-	<%= text_field_tag :firstname, @first, {:class => "input-small", :placeholder => "First"} %>
-	<%= text_field_tag :lastname, @last, {:class => "input-small", :placeholder => "Last"} %>
-	<%= text_field_tag :id, @id, {:class => "span1", :placeholder => "ID"} %>
-	<%= submit_tag "Search", {:class => "btn"} %>
-<% end %>
+<%= render "search" %>
 <div class="row">
 	<div class="span6">
 		<% if !@students.nil? then %>

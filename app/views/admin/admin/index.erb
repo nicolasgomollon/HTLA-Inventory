@@ -1,2 +1,11 @@
-<%= link_to "Search for Computers", admin_computers_path %><br/>
-<%= link_to "Search for Students", admin_students_path %>
+<div class="row">
+	<div class="span6">
+		<h3>Computers</h3>
+		<%= render "admin/computers/search" %>
+	</div>
+
+	<div class="span6">
+		<h3>Students</h3>
+		<%= render "admin/students/search" %>
+	</div>
+</div>

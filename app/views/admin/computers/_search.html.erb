@@ -1,0 +1,4 @@
+<%= form_tag admin_computers_path, :method=>'get', :html => {:class => "form-inline" } do %>
+	<%= text_field_tag :serial, @serial, {:placeholder => "Serial or Tag"} %>
+	<%= submit_tag "Search", {:class => "btn"} %>
+<% end %>
