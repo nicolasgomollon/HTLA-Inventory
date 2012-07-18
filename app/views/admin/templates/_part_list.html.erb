@@ -1,0 +1,7 @@
+<% template.parts_array.each do |part| %>
+	<div class="part">
+		<%= f.text_field :parts_array, name: "computer_template[parts_array][]", value: part, placeholder: "Part name" %> 
+		<a onclick="$(this).parents('.part').remove()">remove</a>
+	</div>
+<% end %>
+<button class="btn btn-primary" name="commit" value="add">Add Part</button>

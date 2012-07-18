@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="span 6 offset3">
+		<%= form_for [:admin, @template] do |f| %>
+			<%= render 'shared/error_messages', :errors => @template.errors %>
+			<%= f.label :name, "Computer Model" %>
+			<%= f.text_field :name %>
+
+			<span class="help-block">Parts</span>
+			<%= render 'part_list', :template => @template, :f => f %>
+			<%= f.submit class: "btn" %>
+		<% end %>
+	</div>
+</div>

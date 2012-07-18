@@ -1,7 +1,1 @@
-<%= form_tag(admin_templates_path, :method => "post") do %>
-	<%= label_tag(:name, "Computer Model:") %>
-	<%= text_field_tag(:name) %>
-	<%= label_tag(:parts, "CSL of Parts:") %>
-	<%= text_field_tag(:parts) %>
-	<%= submit_tag "Create Template" %>
-<% end %>
+<%= render 'form' %>

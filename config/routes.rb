@@ -52,7 +52,7 @@ HTLAInventory::Application.routes.draw do
     resources :students
     resources :ownerships, :as => :computer_ownerships
     resources :computers
-    resources :templates
+    resources :templates, :as => :computer_templates
     resources :repairs, :as => :repair_orders
     resources :bills
     resources :users, :as => :admin_users
