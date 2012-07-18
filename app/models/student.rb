@@ -8,4 +8,11 @@ class Student < ActiveRecord::Base
   def nicename
     "#{self.firstname} #{self.lastname}"
   end
+
+  def current_computer
+  	self.computer_ownerships.each do |ownership|
+  		return ownership.computer if ownership.current?
+  	end
+  	return nil
+  end
 end

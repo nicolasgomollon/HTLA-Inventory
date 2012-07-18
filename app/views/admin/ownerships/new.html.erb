@@ -1,14 +1,10 @@
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#datepicker").datepicker({dateFormat:"yy-mm-dd"})
-	})
-</script>
 <%= form_for [:admin, @ownership] do |f| %>
-	<%= f.label :student_id, "Student ID" %>
-	<%= f.text_field :student_id %>
-	<%= f.label :computer_id, "Computer ID" %>
-	<%= f.text_field :computer_id %>
-	<%= label_tag(:date, "Start Date") %>
-	<%= text_field_tag(:date, Date.today.to_s, :id=>"datepicker") %>
-	<%= f.submit %>
+	<%= render 'shared/error_messages', :errors => @ownership.errors %>
+	<div class="control-group">
+		<%= f.label :student_idnum, "Student ID" %>
+		<%= f.text_field :student_idnum %>
+		<%= f.label :computer_tag, "Computer ID" %>
+		<%= f.text_field :computer_tag %>
+		<button class="btn btn-primary">Create Ownership</button>
+	</div>
 <% end %>
