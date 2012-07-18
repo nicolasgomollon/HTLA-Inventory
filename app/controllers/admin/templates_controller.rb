@@ -7,7 +7,7 @@ class Admin::TemplatesController < Admin::AdminController
   def create
     if params[:commit] == "add" then
       @template = ComputerTemplate.new(params[:computer_template])
-      @template.parts_array = @template.parts_array << "Part"
+      @template.parts_array = @template.parts_array << "New Part"
       render 'new'
     else
       @template = ComputerTemplate.new(params[:computer_template])
@@ -15,6 +15,21 @@ class Admin::TemplatesController < Admin::AdminController
         redirect_to [:admin, @template]
       else
         render 'new'
+      end
+    end
+  end
+
+  def update
+    @template = ComputerTemplate.find(params[:id])
+    if params[:commit] == "add" then
+      @template.parts_array = params[:computer_template][:parts_array]
+      @template.parts_array = @template.parts_array << "New Part"
+      render 'edit'
+    else
+      if @template.update_attributes(params[:computer_template]) then
+        redirect_to [:admin, @template]
+      else
+        render 'edit'
       end
     end
   end
