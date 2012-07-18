@@ -1,5 +1,8 @@
 class Computer < ActiveRecord::Base
   attr_accessible :brand, :idtag, :location, :model, :serial, :number, :computer_parts_attributes
+
+  validates :serial, :presence => true, :uniqueness => true
+  validates :idtag, :presence => true, :uniqueness => true
   
   has_many :computer_parts
   

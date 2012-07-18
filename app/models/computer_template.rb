@@ -3,7 +3,7 @@ class ComputerTemplate < ActiveRecord::Base
   attr_accessible :name, :parts, :parts_array
 
   after_initialize do
-  	self.parts ||= "Screen,Hard Drive,Shell,Battery,Hinges,Keyboard"
+  	self.parts ||= "Screen,Hard Drive,Shell,Battery,Hinges,Keyboard,Charger"
   end
 
   validates_presence_of :name

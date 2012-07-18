@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120718215228) do
+ActiveRecord::Schema.define(:version => 20120718221608) do
 
   create_table "activities", :force => true do |t|
     t.date     "date"
@@ -78,7 +78,8 @@ ActiveRecord::Schema.define(:version => 20120718215228) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "computers", ["serial"], :name => "index_computers_on_serial"
+  add_index "computers", ["idtag"], :name => "index_computers_on_idtag", :unique => true
+  add_index "computers", ["serial"], :name => "index_computers_on_serial", :unique => true
 
   create_table "repair_orders", :force => true do |t|
     t.date    "startdate"

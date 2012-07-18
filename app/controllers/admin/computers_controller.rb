@@ -1,3 +1,4 @@
+require 'csv'
 
 class Admin::ComputersController < Admin::AdminController
   def index
@@ -52,5 +53,27 @@ class Admin::ComputersController < Admin::AdminController
     @computer.save
     
     redirect_to edit_admin_computer_path(@computer)
+  end
+
+  def import
+  end
+
+  def upload
+    if params[:csv] then
+      csv = CSV.new(params[:csv].read, {:headers => true})
+      @count = 0
+      csv.each do |row| 
+        if !@template = ComputerTemplate.find_by_name(row['Model']) then
+          @template = ComputerTemplate.new(name: row['Model'])
+          @template.save
+        end
+        computer = Computer.new({
+            :idtag => row['Computer Name'],
+            :serial => row['Serial']
+        })
+        computer.save
+        @count += 1 if computer.create_parts(@template)
+      end
+    end
   end
 end
