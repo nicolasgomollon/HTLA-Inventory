@@ -40,6 +40,14 @@ class Admin::BillsController < Admin::AdminController
     
     redirect_to [:admin, @repair]
   end
+
+  def destroy
+    @bill = Bill.find(params[:id])
+    @bill.paid = true
+    @bill.save
+
+    redirect_to [:admin, @bill]
+  end
   
   def show
     @bill = Bill.find(params[:id])

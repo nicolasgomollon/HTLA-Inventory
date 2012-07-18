@@ -1,6 +1,16 @@
-$<%= @bill.amount %> For <%= link_to "Repair Order", [:admin, @bill.repair_order] %> on 
-<%= link_to @bill.repair_order.computer.idtag, [:admin, @bill.repair_order.computer] %>
-<% if !@bill.student.nil? %>
-	billed to <%=link_to @bill.student.nicename, [:admin, @bill.student] %>
-<% end %>
-<br/> Currently: <span <%= showbad @bill.paid %>><%= @bill.paid ? "Paid" : "Unpaid" %></span>
+<div class="row">
+	<div class="span6 offset3">
+		<h2>$<%= @bill.amount %> For <%= link_to @bill.repair_order.description, [:admin, @bill.repair_order] %> on 
+		<%= link_to @bill.repair_order.computer.idtag, [:admin, @bill.repair_order.computer] %></h2>
+		<% if !@bill.student.nil? %>
+			</br>billed to <%=link_to @bill.student.nicename, [:admin, @bill.student] %>
+		<% end %>
+		<% unless @bill.paid %>
+			<%= link_to [:admin, @bill], :method => :delete do %>
+				<button class="btn btn-danger">Pay</button>
+			<% end %>
+		<% else %>
+			<span class="label label-success">Paid!</span>
+		<% end %>
+	</div>
+</div>

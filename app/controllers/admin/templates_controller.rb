@@ -47,7 +47,7 @@ class Admin::TemplatesController < Admin::AdminController
     @template = ComputerTemplate.find(params[:id])
     @template.destroy
 
-    redirect_to admin_computer_template_path
+    redirect_to admin_computer_templates_path
   end
 
   def index

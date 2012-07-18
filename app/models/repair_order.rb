@@ -16,6 +16,10 @@ class RepairOrder < ActiveRecord::Base
     self.activities.new(:desc => description, :message => Activity::Messages[:closed]).save
     self
   end
+
+  def description
+    self.activities.first.desc
+  end
   
   def open?
     return true if self.enddate.nil?
