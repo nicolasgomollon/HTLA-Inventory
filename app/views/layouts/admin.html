@@ -11,34 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <a class="brand" href="/admin/">Inventory Admin</a>
-        <div class="nav-collapse">
-          <ul class="nav">
-            <li><%= link_to "Students", admin_students_path %></li>
-            <li><%= link_to "Computers", admin_computers_path %></li>
-            <li><%= link_to "Repairs", admin_repair_orders_path %></li>
-            <li><%= link_to "Bills", admin_bills_path %></li>
-            <li><%= link_to "Templates", admin_templates_path %></li>
-            <li><%= link_to "Users", admin_admin_users_path %></li>
-            <% if signed_in? %>
-              <li class="divider-vertical"></li>
-              <li>
-                <%= link_to "Logout", admin_logout_path %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render 'layouts/admin_nav' %>
 
   <div class="container">
     <div class="container">

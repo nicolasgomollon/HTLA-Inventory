@@ -1,4 +1,6 @@
 
+require 'csv'
+
 class Admin::StudentsController < Admin::AdminController
   def index
     query = ""
@@ -29,4 +31,26 @@ class Admin::StudentsController < Admin::AdminController
   def show
     @student = Student.find(params[:id])
   end
+
+  def import
+  end
+
+  def upload
+    if params[:csv] then
+      csv = CSV.new(params[:csv].read, {:headers => true})
+      @count = 0
+      csv.each do |row| 
+        student = Student.new({
+            :firstname => row['First Name'],
+            :lastname => row['Last Name'],
+            :studentid => row['Student Number']
+        })
+        if row['Grade Level'] then
+          student.classof = Date.today.year + (13 - row['Grade Level'].to_i)
+        end
+        @count += 1 if student.save
+      end
+    end
+  end
+
 end

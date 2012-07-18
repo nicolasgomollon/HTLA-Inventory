@@ -49,9 +49,19 @@ HTLAInventory::Application.routes.draw do
   #     resources :products
   #   end
   namespace :admin do
-    resources :students
+    resources :students do
+      collection do
+        get :import
+        post :upload
+      end
+    end
     resources :ownerships, :as => :computer_ownerships
-    resources :computers
+    resources :computers do
+      collection do
+        get :import
+        post :upload
+      end
+    end
     resources :templates, :as => :computer_templates
     resources :repairs, :as => :repair_orders
     resources :bills
