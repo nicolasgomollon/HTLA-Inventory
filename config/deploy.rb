@@ -1,3 +1,9 @@
+require 'bundler/capistrano'
+
+default_run_options[:pty] = true
+
+set :gateway, "ww2.hthla.org"
+
 set :application, "HTLA Inventory"
 set :repository,  "git://github.com/nicolasgomollon/HTLA-Inventory.git"
 

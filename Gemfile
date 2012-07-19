@@ -6,6 +6,7 @@ gem 'capistrano', :git => 'git://github.com/capistrano/capistrano.git'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'mysql2'
 gem 'thin'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'json'
@@ -22,10 +23,6 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
   gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
-end
-
-group :production do
-	gem 'mysql2'
 end
 
 gem 'jquery-rails'
