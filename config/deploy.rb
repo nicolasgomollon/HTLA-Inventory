@@ -1,4 +1,4 @@
-require "config/capistrano_database_yml"
+require "capistrano_database_yml"
 
 set :application, "HTLA Inventory"
 set :repository,  "git://github.com/nicolasgomollon/HTLA-Inventory.git"
