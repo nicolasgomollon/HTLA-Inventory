@@ -6,7 +6,7 @@ gem 'capistrano', :git => 'git://github.com/capistrano/capistrano.git'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-gem 'activerecord-mysql-adapter'
+gem 'mysql2'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'json'
 
