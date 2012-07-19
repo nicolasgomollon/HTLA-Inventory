@@ -1,0 +1,17 @@
+base: &base
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  host: localhost
+  timeout: 5000
+  username: <%=Capistrano::CLI.ui.ask("Enter MySQL database username: ")%>
+  password: <%=Capistrano::CLI.ui.ask("Enter MySQL database password: ")%>
+development:
+  database: my_app_development
+  <<: *base
+test:
+  database: my_app_test
+  <<: *base
+production:
+  database: my_app_production
+  <<: *base

@@ -71,8 +71,8 @@ class Admin::ComputersController < Admin::AdminController
             :idtag => row['Computer Name'],
             :serial => row['Serial']
         })
-        computer.save
-        @count += 1 if computer.create_parts(@template)
+        @count += 1 if computer.save
+        computer.create_parts(@template)
       end
     end
   end
