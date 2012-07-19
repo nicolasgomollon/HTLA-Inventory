@@ -1,13 +1,11 @@
-require "capistrano_database_yml"
-
 set :application, "HTLA Inventory"
 set :repository,  "git://github.com/nicolasgomollon/HTLA-Inventory.git"
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-set :deploy_to => "/var/www/inventory"
-set :user => "jmoore"
+set :deploy_to, "/var/www/inventory"
+set :user, "jmoore"
 server "10.1.2.24", :app, :web, :db, :primary => true
 
 # if you want to clean up old releases on each deploy uncomment this:

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.5'
-gem 'capistrano'
+gem 'capistrano', :git => 'git://github.com/capistrano/capistrano.git'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
