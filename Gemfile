@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.5'
-gem 'capistrano', :git => 'git://github.com/capistrano/capistrano.git'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+
 gem 'mysql2'
 gem 'thin'
 gem 'bcrypt-ruby', '~> 3.0.0'
@@ -23,6 +23,11 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
   gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+end
+
+group :test, :development do
+	gem 'sqlite3'
+	gem 'capistrano'
 end
 
 gem 'jquery-rails'

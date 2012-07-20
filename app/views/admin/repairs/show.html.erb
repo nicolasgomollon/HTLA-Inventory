@@ -1,5 +1,3 @@
-
-
 <div class="row">
 	<div class="span3">
 		<h3>Repair for: <%= link_to @repair.computer.idtag, admin_computer_path(@repair.computer) %><br/></h3>
@@ -28,29 +26,14 @@
 			<caption>Activity</caption>
 		</table>
 		<% if @repair.open? %>
-			<%= form_for [:admin, @repair], :html => {:id => "edit_form"} do |f| %>
-				<%= label_tag :desc, "Update" %>
-				<%= text_area_tag :desc %>
-				<%= hidden_field_tag :close %>
-				<div class="btn-group">
-					<%= submit_tag "Update", {:class => "btn btn-primary"} %>
-					<%= submit_tag "Close", {:id => "close_button", :class => "btn btn-danger"} %>
-				</div>
-			<% end %>
+			<%= render 'admin/repairs/form', :repair => @repair %>
 		<% end %>
 	</div>
 
 	<div class="span6">
 		<%= render "admin/bills/show", :bills => @repair.bills %>
 		<% if @repair.open? %>
-			<%= form_for [:admin, @bill], :html => {:class => "form-inline"} do |f| %>
-				<%= f.text_field :desc, {:placeholder => "Description"} %>
-				<div id="labor_button" class="btn btn-warning" data-toggle="button">Labor</div>
-					<%= f.text_field :amount, {:placeholder => "Amount", :class => "input-mini"} %>
-				<%= f.hidden_field :labor %>
-				<%= hidden_field_tag :repair_order_id, @bill.repair_order_id %>
-				<%= submit_tag "Create Bill", {:id => "bill_submit", :class => "btn"} %>
-			<% end %>
+			<%= render 'admin/bills/form', :bill => @bill %>
 		<% end %>
 	</div>
 </div>

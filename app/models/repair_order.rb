@@ -1,20 +1,18 @@
-class RepairOrder < ActiveRecord::Base
+  class RepairOrder < ActiveRecord::Base
   attr_accessible :startdate, :enddate, :computer_id
-  
+
+  belongs_to :computer
+  has_many :activities
+  has_many :bills
+
+  validate :has_activities
+
   after_initialize do
     self.startdate = Date.today
   end
-  
-  def open(description)
-    return false unless self.activities.empty?
-    self.activities.new(:desc => description, :message => Activity::Messages[:created]).save
-    self
-  end
-  
-  def close(description)
-    return false if self.activities.empty?
-    self.activities.new(:desc => description, :message => Activity::Messages[:closed]).save
-    self
+
+  def has_activities
+    errors[:base] << "No activities!" if self.activities.count == 0
   end
 
   def description
@@ -26,8 +24,4 @@ class RepairOrder < ActiveRecord::Base
     return true if self.enddate > Date.today
     return false
   end
-  
-  belongs_to :computer
-  has_many :activities
-  has_many :bills
 end

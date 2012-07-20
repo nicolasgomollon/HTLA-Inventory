@@ -1,0 +1,9 @@
+<%= form_for [:admin, bill], :html => {:class => "form-inline"} do |f| %>
+	<%= render 'shared/error_messages', :errors => bill.errors %>
+	<%= f.text_field :desc, {:placeholder => "Description"} %>
+	<div id="labor_button" class="btn btn-warning" data-toggle="button">Labor</div>
+		<%= f.text_field :amount, {:placeholder => "Amount", :class => "input-mini"} %>
+	<%= f.hidden_field :labor %>
+	<%= f.hidden_field :repair_order_id %>
+	<%= submit_tag "Create Bill", {:id => "bill_submit", :class => "btn"} %>
+<% end %>

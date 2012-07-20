@@ -24,21 +24,18 @@ class Admin::BillsController < Admin::AdminController
   end
   
   def create
-    @repair = RepairOrder.find(params[:repair_order_id])
-    if !@repair.open? then
-      flash[:error] = Messages[:repair_closed]
-      redirect_to edit_admin_repair_order_path(@repair)
+    @bill = Bill.new(params[:bill])
+    if @bill.repair_order then
+      if @bill.save then
+        redirect_to [:admin, @bill.repair_order]
+      else
+        @repair = @bill.repair_order
+        render 'admin/repairs/show'
+      end
+    else
+      redirect_to request.referer, :flash => {:error => "No repair order"}
       return
     end
-    @bill = @repair.bills.new
-    @bill.update_attributes(params[:bill])
-    
-    student = @repair.computer.get_current_student
-    @bill.student = student unless student.nil?  
-    
-    @bill.save
-    
-    redirect_to [:admin, @repair]
   end
 
   def destroy

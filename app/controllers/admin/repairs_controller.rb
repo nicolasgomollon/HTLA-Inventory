@@ -13,15 +13,14 @@ class Admin::RepairsController < Admin::AdminController
   end
   
   def create
-    @repair = RepairOrder.new
-    @repair.update_attributes(params[:repair_order])
-    ## TODO, associate activity with the logged in student (ancillary, logins...)
-    @activity = @repair.activities.new(:desc => params[:desc], :date => Date.today, :message => Activity::Messages[:created])
-    
-    @repair.save
-    @activity.save
-    
-    redirect_to admin_repair_order_path(@repair)
+    @repair = RepairOrder.create(params[:repair_order])
+    @activity = @repair.activities.build(params[:activity])
+    if @activity.save and @repair.save then
+      redirect_to [:admin, @repair]
+    else
+      @computer = @repair.computer
+      render 'admin/computers/show'
+    end
   end
   
   def show
@@ -30,16 +29,18 @@ class Admin::RepairsController < Admin::AdminController
   end
   
   def update
-    repair = RepairOrder.find(params[:id])
+    @repair = RepairOrder.find(params[:id])
     
-    repair.enddate = Date.today if params[:close]
+    @repair.enddate = Date.today if params[:commit] == "close"
     ##TODO association as in #create
-    activity = repair.activities.new(:date => Date.today, :desc => params[:desc])
-    activity.message = Activity::Messages[:closed] if params[:close]
+    @activity = @repair.activities.new(:date => Date.today, :desc => params[:desc])
+    @activity.message = Activity::Messages[:closed] if params[:commit] == "close"
     
-    repair.save
-    activity.save
-    
-    redirect_to admin_repair_order_path(repair)
+    if @repair.save and @activity.save then
+      redirect_to admin_repair_order_path(repair)
+    else
+      @bill = @repair.bills.new
+      render 'show'
+    end
   end
 end

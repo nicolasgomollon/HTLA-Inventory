@@ -33,15 +33,6 @@
 
 	<div class="span4">
 		<%= render "admin/repairs/list", :repairs => @computer.repair_orders %>
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$("#datepicker").datepicker({dateFormat:"yy-mm-dd"})
-			})
-		</script>
-		<%= form_for [:admin, @repair] do |f| %>
-			<%= f.hidden_field :computer_id %>
-			<%= text_area_tag :desc, "", {:placeholder => "Description"} %>
-			<button class="btn btn-primary">New Repair Order</button>
-		<% end %>
+		<%= render "admin/repairs/form", :repair => @repair %>
 	</div>
 </div>

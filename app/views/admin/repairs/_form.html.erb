@@ -1,0 +1,20 @@
+<%= render 'shared/error_messages', :errors => repair.errors %>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#datepicker").datepicker({dateFormat:"yy-mm-dd"})
+	})
+</script>
+<%= form_for [:admin, repair] do |f| %>
+	<%= f.hidden_field :computer_id %>
+	<%= fields_for Activity.new do |fields| %>
+		<%= fields.text_area :desc, placeholder: "Description", :rows => 5 %>
+	<% end %>
+	<% if repair.new_record? then %>
+		<button class="btn btn-primary">New Repair Order</button>
+	<% else %>				
+		<div class="btn-group">
+			<%= submit_tag "Update", {:class => "btn btn-primary", :name => "update"} %>
+			<%= submit_tag "Close", {:id => "close_button", :class => "btn btn-danger", :name => "close"} %>
+		</div>
+	<% end %>
+<% end %>
