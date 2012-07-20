@@ -21,6 +21,27 @@ namespace :deploy do
   task :symlink_db, :roles => :app do
     run "ln -nfs #{deploy_to}/shared/config/database.yml #{release_path}/config/database.yml"
   end
+
+  desc "Start the Thin processes"
+  task :start do
+    run  <<-CMD
+      sudo /etc/init.d/thin start
+    CMD
+  end
+
+  desc "Stop the Thin processes"
+  task :stop do
+    run  <<-CMD
+      sudo /etc/init.d/thin stop
+    CMD
+  end
+
+  desc "Start the Thin processes"
+  task :restart do
+    run  <<-CMD
+      sudo /etc/init.d/thin restart
+    CMD
+  end
 end
 
 
