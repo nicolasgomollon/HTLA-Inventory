@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20120719193515) do
     t.text     "remember_token"
   end
 
-  add_index "admin_users", ["username"], :name => "index_admin_users_on_username", :unique => true, :length => 40
+  add_index "admin_users", ["username"], :name => "index_admin_users_on_username", :unique => true, :length => {"username"=>40}
 
   create_table "bills", :force => true do |t|
     t.string  "desc"
@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(:version => 20120719193515) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "computers", ["idtag"], :name => "index_computers_on_idtag", :unique => true, :length => 40
-  add_index "computers", ["serial"], :name => "index_computers_on_serial", :unique => true, :length => 40
+  add_index "computers", ["idtag"], :name => "index_computers_on_idtag", :unique => true, :length => {"idtag"=>40}
+  add_index "computers", ["serial"], :name => "index_computers_on_serial", :unique => true, :length => {"serial"=>40}
 
   create_table "repair_orders", :force => true do |t|
     t.date    "startdate"
@@ -97,6 +97,6 @@ ActiveRecord::Schema.define(:version => 20120719193515) do
     t.integer  "access",     :default => 0
   end
 
-  add_index "students", ["studentid"], :name => "index_students_on_studentid", :unique => true 
+  add_index "students", ["studentid"], :name => "index_students_on_studentid", :unique => true
 
 end
