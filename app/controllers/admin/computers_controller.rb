@@ -32,6 +32,12 @@ class Admin::ComputersController < Admin::AdminController
   
   def edit
     @computer = Computer.find(params[:id])
+
+    @location_options = []
+    @location_options << [@computer.location.name, @computer.location_id] if @computer.location
+    Location.all.each do |location|
+      @location_options << [location.name, location.id] unless @location_options.include? [location.name, location.id]
+    end
   end
   
   def update

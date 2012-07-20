@@ -67,6 +67,7 @@ HTLAInventory::Application.routes.draw do
         match "reports" => "reports#index"
       end
     end
+    resources :locations
     resources :templates, :as => :computer_templates
     resources :repairs, :as => :repair_orders
     resources :bills

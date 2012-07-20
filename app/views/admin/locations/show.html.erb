@@ -1,0 +1,6 @@
+<div class="row">
+	<div class="span6 offset3">
+		<h2>Location: <%= @location.name %></h2>
+		<%= render 'admin/computers/list', :computers => @location.computers, :lineno => true %>
+	</div>
+</div>

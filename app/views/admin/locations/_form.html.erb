@@ -1,0 +1,7 @@
+<%= form_for [:admin, location] do |f| %>
+	<%= render 'shared/error_messages', :errors => location.errors %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+
+	<%= f.submit class: "btn" %>
+<% end %>

@@ -1,3 +1,5 @@
+<div class="row">
+	<div class="span6 offset3">
 <%= form_for [:admin, @computer]  do |f| %>
 	<div class="row">
 	<div class="span6">
@@ -45,9 +47,14 @@
 	</div>
 </div>
 <div class="row">
-	<div class="input-append">
-		<%= f.text_field :idtag, {:placeholder => "Tag"} %>
-		<%= submit_tag "Update Computer", {:class => "btn btn-primary"} %>
-	</div>
+	<div class="span6">
+		<%= select_tag "computer[id]", options_for_select(@location_options), value: @computer.location_id %>
+		<div class="input-append">
+			<%= f.text_field :idtag, {:placeholder => "Tag"} %>
+			<%= submit_tag "Update Computer", {:class => "btn btn-primary"} %>
+		</div>
+	</div>	
 </div>
 <% end %>
+</div>
+</div>

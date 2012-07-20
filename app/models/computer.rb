@@ -1,5 +1,5 @@
 class Computer < ActiveRecord::Base
-  attr_accessible :brand, :idtag, :location, :model, :serial, :number, :computer_parts_attributes
+  attr_accessible :brand, :idtag, :location, :model, :serial, :number, :computer_parts_attributes, :location_id
 
   validates :serial, :presence => true, :uniqueness => true
   validates :idtag, :presence => true, :uniqueness => true
@@ -9,6 +9,8 @@ class Computer < ActiveRecord::Base
   has_many :computer_ownerships
   has_many :students, :through => :computer_ownerships
   has_many :repair_orders
+
+  belongs_to :location
 
   accepts_nested_attributes_for :computer_parts
   
