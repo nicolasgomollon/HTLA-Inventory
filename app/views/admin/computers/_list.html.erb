@@ -1,0 +1,23 @@
+<table class="table table-striped table-bordered table-condensed">
+	<thead>
+		<tr>
+			<% if lineno then %>
+				<th>#</th>
+			<% end %>
+			<th>Tag</th>
+			<th>Serial</th>
+		</tr>
+	</thead>
+	<tbody>
+<% count = 0 if lineno %>
+<% computers.each do |computer| %>
+	<tr>
+		<% if lineno then count += 1 %>
+			<td><%= count %>
+		<% end %>
+		<td><%= link_to computer.idtag, [:admin, computer] %></td>
+		<td><%= link_to computer.serial, [:admin, computer] %></td>
+	</tr>
+<% end %>
+	</tbody>
+</table>

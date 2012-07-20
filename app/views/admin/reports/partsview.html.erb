@@ -1,0 +1,6 @@
+<div class="row">
+	<div class="span6 offset3">
+		<h2> Computer with <%= @bad ? "Bad" : "Good" %> <%= @part %></h2>
+		<%= render 'admin/computers/list', :computers => @list, :lineno => true %>
+	</div>
+</div>

@@ -1,0 +1,11 @@
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_tag reports_partsview_admin_computers_path, :method=> "get" do %>
+			<%= select_tag :part, options_for_select(@parts) %>
+			<div class="btn-group" data-toggle="buttons-radio">
+				<button name="commit" value="good" class="btn btn-success">Good</button>
+				<button name="commit" value="bad" class="btn btn-danger">Bad</button>
+			</div>
+		<% end %>
+	</div>
+</div>

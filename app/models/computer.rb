@@ -36,5 +36,16 @@ class Computer < ActiveRecord::Base
       hash[part.name] = part
     end
     return hash
+  end
+
+  def bad?
+    self.computer_parts.each do |part|
+      return true unless part.status
+    end
+    return false
+  end
+
+  def good?
+    return !bad?
   end  
 end

@@ -60,6 +60,11 @@ HTLAInventory::Application.routes.draw do
       collection do
         get :import
         post :upload
+        match "reports/bad" => "reports#bad"
+        match "reports/good" => "reports#good"
+        match "reports/parts" => "reports#parts"
+        match "reports/partsview" => "reports#partsview"
+        match "reports" => "reports#index"
       end
     end
     resources :templates, :as => :computer_templates
