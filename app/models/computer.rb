@@ -13,6 +13,19 @@ class Computer < ActiveRecord::Base
   belongs_to :location
 
   accepts_nested_attributes_for :computer_parts
+
+  comma do
+    model 'Computer Model'
+    idtag 'Tag'
+    serial 'Serial'
+
+    computer_parts {|parts| 
+      tmp = ""
+      parts.all.each { |part| tmp+= "#{part.name} #{(part.status ? "Good" : "Bad")}: #{part.description} " unless part.status} 
+      tmp}
+
+    get_current_student :nicename => 'Student Holder'
+  end
   
   def get_current_student
     self.computer_ownerships.order("startdate DESC").each do |ownership|
