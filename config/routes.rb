@@ -64,6 +64,7 @@ HTLAInventory::Application.routes.draw do
         match "reports/good" => "reports#good"
         match "reports/parts" => "reports#parts"
         match "reports/partsview" => "reports#partsview"
+        match "reports/all" => "reports#fullcsv"
         match "reports" => "reports#index"
       end
     end

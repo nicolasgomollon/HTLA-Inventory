@@ -9,6 +9,7 @@ gem 'rails', '3.2.5'
 gem 'mysql2'
 gem 'thin'
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem "comma", "~> 3.0"
 gem 'json'
 
 

@@ -37,4 +37,11 @@ class Admin::ReportsController < Admin::AdminController
 			end
 		end
 	end
+
+	def fullcsv
+		respond_to do |format|
+			format.csv { render :csv => Computer.includes(:computer_parts, :computer_ownerships).all,
+								:filename => "full_inventory" }
+		end
+	end
 end
