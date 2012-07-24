@@ -26,6 +26,7 @@
 			</tbody>
 			<caption>Parts</caption>
 		</table>
+		<h4>Location: <%= @computer.location.name %> </h4><br/>
 		<%= link_to edit_admin_computer_path(@computer) do %>
 			<button class="btn btn-primary">Edit Computer</button>
 		<% end %>
