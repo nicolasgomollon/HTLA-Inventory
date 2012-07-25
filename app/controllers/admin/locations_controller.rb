@@ -26,7 +26,15 @@ class Admin::LocationsController < Admin::AdminController
 		end
 	end
 
-	def show
-		@location = Location.find(params[:id])
+	def show		
+		respond_to do |format|
+			format.html {
+				@location = Location.find(params[:id])
+			}
+			format.csv {
+				@location = Location.find(params[:id], :include => [:computers => [:computer_parts, :computer_ownerships]])
+				render :csv => @location.computers, :filename => @location.name
+			}
+		end
 	end
 end
