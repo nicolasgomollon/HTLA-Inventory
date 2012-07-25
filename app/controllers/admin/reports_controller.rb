@@ -9,12 +9,24 @@ class Admin::ReportsController < Admin::AdminController
 		Computer.includes(:computer_parts).all.each do |computer|
 			@bad << computer if computer.bad?
 		end
+		respond_to do |format|
+			format.html
+			format.csv {
+				render :csv => @bad, :filename => "Bad"
+			}
+		end
 	end
 
 	def good
 		@good = []
 		Computer.includes(:computer_parts).all.each do |computer|
 			@good << computer if computer.good?
+		end
+		respond_to do |format|
+			format.html
+			format.csv {
+				render :csv => @good, :filename => "Good"
+			}
 		end
 	end
 
@@ -35,6 +47,12 @@ class Admin::ReportsController < Admin::AdminController
 			unless computer.parts[@part].nil? then
 				@list << computer if computer.parts[@part].status != @bad
 			end
+		end
+		respond_to do |format|
+			format.html
+			format.csv {
+				render :csv => @list, :filename => (@bad ? "Bad" : "Good") + " " + @part
+			}
 		end
 	end
 

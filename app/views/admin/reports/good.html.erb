@@ -1,6 +1,7 @@
 <div class="row">
 	<div class="span6 offset3">
 		<h2> Bad Computers </h2>
+		<h4><%= link_to "Download CSV", request.url + ".csv" %></h4>
 		<%= render 'admin/computers/list', :computers => @good, :lineno => true %>
 	</div>
 </div>
