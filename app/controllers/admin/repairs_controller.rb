@@ -33,7 +33,7 @@ class Admin::RepairsController < Admin::AdminController
     
     @repair.enddate = Date.today if params[:close] == "Close"
     ##TODO association as in #create
-    @activity = @repair.activities.new(:date => Date.today, :desc => params[:repair_order][:activity][:desc])
+    @activity = @repair.activities.new(:date => Date.today, :desc => params[:activity][:desc])
     @activity.message = Activity::Messages[:closed] if params[:close] == "Close"
     
     if @repair.save and @activity.save then
