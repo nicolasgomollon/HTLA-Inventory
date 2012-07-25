@@ -47,8 +47,16 @@
 	</div>
 </div>
 <div class="row">
+	<div class="span3">
+		<%= f.text_area :problem, placeholder: "Other Problems", rows: 5 %>
+	</div>
+	<div class="span3">
+		<%= f.label :location_id, "Location:" %>
+		<%= f.select :location_id, options_for_select(@location_options), value: @computer.location_id %>
+	</div>
+</div>
+<div class="row">
 	<div class="span6">
-			<%= f.select :location_id, options_for_select(@location_options), value: @computer.location_id %>
 		<div class="input-append">
 			<%= f.text_field :idtag, {:placeholder => "Tag"} %>
 			<%= submit_tag "Update Computer", {:class => "btn btn-primary"} %>

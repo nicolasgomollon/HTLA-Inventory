@@ -1,5 +1,5 @@
 class Computer < ActiveRecord::Base
-  attr_accessible :brand, :idtag, :location, :model, :serial, :number, :computer_parts_attributes, :location_id
+  attr_accessible :brand, :idtag, :location, :model, :serial, :number, :computer_parts_attributes, :location_id, :problem
 
   validates :serial, :presence => true, :uniqueness => true
   validates :idtag, :presence => true, :uniqueness => true
@@ -27,6 +27,9 @@ class Computer < ActiveRecord::Base
       tmp = ""
       parts.all.each { |part| tmp+= "#{part.name} #{(part.status ? "Good" : "Bad")}: #{part.description} " unless part.status} 
       tmp}
+
+    problem 'Other Problems'
+    location :name => 'Location'
 
     get_current_student :nicename => 'Student Holder'
   end
@@ -61,6 +64,7 @@ class Computer < ActiveRecord::Base
     self.computer_parts.each do |part|
       return true unless part.status
     end
+    return true unless self.problem.nil? or self.problem.empty?
     return false
   end
 
