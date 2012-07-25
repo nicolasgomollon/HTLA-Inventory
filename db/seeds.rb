@@ -8,3 +8,5 @@
 users = AdminUser.create([
 	{:username => "jmoore", :password => "admin", :password_confirmation => "admin", :fullname => "Julian R. Moore"},
 ])
+
+locations = Location.create(name: "Unknown" )
