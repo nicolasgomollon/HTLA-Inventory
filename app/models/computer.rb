@@ -14,6 +14,10 @@ class Computer < ActiveRecord::Base
 
   accepts_nested_attributes_for :computer_parts
 
+  before_create do
+    self.location ||= Location.find_by_name("Unknown")
+  end
+
   comma do
     model 'Computer Model'
     idtag 'Tag'

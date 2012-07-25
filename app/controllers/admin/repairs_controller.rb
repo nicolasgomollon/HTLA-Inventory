@@ -31,13 +31,13 @@ class Admin::RepairsController < Admin::AdminController
   def update
     @repair = RepairOrder.find(params[:id])
     
-    @repair.enddate = Date.today if params[:commit] == "close"
+    @repair.enddate = Date.today if params[:close] == "Close"
     ##TODO association as in #create
-    @activity = @repair.activities.new(:date => Date.today, :desc => params[:desc])
-    @activity.message = Activity::Messages[:closed] if params[:commit] == "close"
+    @activity = @repair.activities.new(:date => Date.today, :desc => params[:repair_order][:activity][:desc])
+    @activity.message = Activity::Messages[:closed] if params[:close] == "Close"
     
     if @repair.save and @activity.save then
-      redirect_to admin_repair_order_path(repair)
+      redirect_to admin_repair_order_path(@repair)
     else
       @bill = @repair.bills.new
       render 'show'

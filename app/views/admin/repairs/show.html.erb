@@ -14,15 +14,17 @@
 					<th>Description</th>
 				</tr>
 			</thead>
-			<% @repair.activities.each do |activity| %>
 			<tbody>
+			<% @repair.activities.each do |activity| %>
+				<% unless activity.new_record? %>
 				<tr>
 					<td><%= activity.date %></td>
 					<td><%= activity.message %></td>
 					<td><%= activity.desc %></td>
 				</tr>
-			</tbody>
+				<% end %>
 			<% end %>
+			</tbody>
 			<caption>Activity</caption>
 		</table>
 		<% if @repair.open? %>
