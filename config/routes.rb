@@ -63,6 +63,8 @@ HTLAInventory::Application.routes.draw do
         match "reports/bad" => "reports#bad"
         match "reports/good" => "reports#good"
         match "reports/parts" => "reports#parts"
+        match "reports/assigned" => "reports#assigned"
+        match "reports/checkout" => "reports#checkout"
         match "reports/partsview" => "reports#partsview"
         match "reports/all" => "reports#fullcsv"
         match "reports" => "reports#index"

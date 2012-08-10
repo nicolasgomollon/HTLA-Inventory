@@ -16,7 +16,9 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a href="#"><%= link_to "Search", admin_computers_path %></a></li>
-                <li><a href="#"><%= link_to "Reports", reports_admin_computers_path %></a></li>
+                <li><%= link_to "Repairs", admin_repair_orders_path %></li>
+                <li><%= link_to "Templates", admin_computer_templates_path %></li>
+                <li><%= link_to "Reports", reports_admin_computers_path %></a></li>
                 <li class="divider"></li>
                 <li><a href="#"><%= link_to "Import", import_admin_computers_path %></a></li>
               </ul>
@@ -28,12 +30,10 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a href="#"><%= link_to "Search", admin_students_path %></a></li>
+                <li><%= link_to "Bills", admin_bills_path %></li>
                 <li><a href="#"><%= link_to "Import", import_admin_students_path %></a></li>
               </ul>
             </li>
-            <li><%= link_to "Repairs", admin_repair_orders_path %></li>
-            <li><%= link_to "Bills", admin_bills_path %></li>
-            <li><%= link_to "Templates", admin_computer_templates_path %></li>
             <li><%= link_to "Locations", admin_locations_path %></li>
             <li><%= link_to "Users", admin_admin_users_path %></li>
           </ul>
