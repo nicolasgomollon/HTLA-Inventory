@@ -69,8 +69,17 @@ class ComputerOwnership < ActiveRecord::Base
 		end
 	end
 
+	class ComputerSingleOwnerValidator < ActiveModel::Validator
+		def validate(record)
+			unless record.computer.nil? then
+				record.errors[:computer_tag] = "A computer may only be assigned to one student!" unless record.computer.get_current_student.nil?
+			end
+		end
+	end
+
 	validates_with StudentIdValidator, :on => :create
 	validates_with ComputerIdValidator, :on => :create
+	validates_with ComputerSingleOwnerValidator, :on => :create
 
 	def query_helper name, value, query_string, query_array
 		if !value.nil? then
