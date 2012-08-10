@@ -40,6 +40,9 @@
             <form class="navbar-search pull-left" action="<%= admin_computers_path %>" method="get">
               <input type="text" class="search-query span2" name="serial" placeholder="Computer Search">
             </form>
+            <form class="navbar-search pull-left" action="<%= admin_students_path %>" method="get">
+              <input type="text" class="search-query span2" name="fullname" placeholder="Student Name">
+            </form>
           <% if signed_in? %>
             <ul class="nav pull-right">
               <li class="divider-vertical"></li>
