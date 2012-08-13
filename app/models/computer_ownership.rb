@@ -17,6 +17,7 @@ class ComputerOwnership < ActiveRecord::Base
 
   def student_idnum=(studentid)
   	students = like_query Student, :studentid, studentid
+ 	logger.debug(students)
   	if students.empty? then
   		self.student_id = nil
   	else

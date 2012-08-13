@@ -1,9 +1,10 @@
 <%= form_for([:admin, @ownership], :html => {:class=>"form-horizontal"}) do |f| %>
 	<%= render 'shared/error_messages', :errors => @ownership.errors %>
-		<h3>Assigning Computer to: <%= link_to @ownership.student.nicename, [:admin, @ownership.student] %></h3>
+		<h3>Assigning Computer to: <% unless @ownership.student.nil? %><%= link_to @ownership.student.nicename, [:admin, @ownership.student] %><% end %></h3>
 		<div class="control-group">
 				<%= f.label :student_idnum, "Student ID" %>
-				<%= f.text_field :student_idnum, class: "disabled", disabled: true %>
+				<%= f.text_field :student_idnum, class: "disabled", disabled: true%>
+				<%= f.hidden_field :student_idnum %>
 				<%= f.label :computer_tag, "Computer ID" %>
 				<%= f.text_field :computer_tag %>
 				<button class="btn btn-primary">Create Ownership</button>
