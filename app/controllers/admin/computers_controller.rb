@@ -23,42 +23,40 @@ class Admin::ComputersController < Admin::AdminController
   
   def new
     @computer = Computer.new
-    templates = ComputerTemplate.all
-    @template_select = []
-    templates.each do |template|
-      @template_select.push([template.name, template.id])
-    end
+    do_templates
   end
   
   def edit
     @computer = Computer.find(params[:id])
-
-    @location_options = []
-    @location_options << [@computer.location.name, @computer.location_id] if @computer.location
+    @location_select = []
+    @location_select << [@computer.location.name, @computer.location_id] if @computer.location
     Location.all.each do |location|
-      @location_options << [location.name, location.id] unless @location_options.include? [location.name, location.id]
+      @location_select << [location.name, location.id] unless @location_select.include? [location.name, location.id]
     end
   end
   
   def update
     @computer = Computer.find(params[:id])
     @computer.update_attributes(params[:computer])    
-    @computer.save
-    
-    redirect_to admin_computer_path(@computer)
+    if !@computer.save then
+      do_templates
+      render 'edit'
+    else
+      redirect_to admin_computer_path(@computer)
+    end
   end
   
   def create
     @template = ComputerTemplate.find(params[:template_id])
-    @computer = Computer.new()
-    @computer.update_attributes(params[:computer])
-    @computer.brand = @template.name
-    @template.parts.split(",").each do |part|
-      @computer.computer_parts.new(:name => part)
+    @computer = Computer.create(params[:computer])
+    if @computer.save then
+      @computer.create_parts(@template)
+      redirect_to edit_admin_computer_path(@computer)  
+    else 
+      do_templates
+      render 'new'
     end
-    @computer.save
     
-    redirect_to edit_admin_computer_path(@computer)
   end
 
   def import
@@ -80,6 +78,14 @@ class Admin::ComputersController < Admin::AdminController
         @count += 1 if computer.save
         computer.create_parts(@template)
       end
+    end
+  end
+
+  def do_templates
+    templates = ComputerTemplate.all
+    @template_select = []
+    templates.each do |template|
+      @template_select.push([template.name, template.id])
     end
   end
 end

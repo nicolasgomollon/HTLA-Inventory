@@ -3,6 +3,7 @@
 <%= form_for [:admin, @computer]  do |f| %>
 	<div class="row">
 	<div class="span6">
+	<%= render 'shared/error_messages', :errors => @computer.errors %>
 	<table class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
@@ -52,7 +53,7 @@
 	</div>
 	<div class="span3">
 		<%= f.label :location_id, "Location:" %>
-		<%= f.select :location_id, options_for_select(@location_options), value: @computer.location_id %>
+		<%= f.select :location_id, options_for_select(@location_select), value: @computer.location_id %>
 	</div>
 </div>
 <div class="row">
